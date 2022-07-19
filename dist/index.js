@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.LoggerWebSocket = exports.LoggerManager = exports.Logger = exports.MGHToolsGlobal = exports.RequestType = exports.APIRequest = exports.APIService = void 0;
+exports.TokenTools = exports.LoggerWebSocket = exports.LoggerManager = exports.Logger = exports.SimpleITRMConnection = exports.ITRMConnection = exports.MGHToolsGlobal = exports.RequestType = exports.APIRequest = exports.APIService = void 0;
 var APIService_1 = require("./services/api/APIService");
 Object.defineProperty(exports, "APIService", { enumerable: true, get: function () { return APIService_1.APIService; } });
 var APIRequest_1 = require("./services/api/APIRequest");
@@ -9,10 +9,16 @@ var APIRequest_2 = require("./services/api/APIRequest");
 Object.defineProperty(exports, "RequestType", { enumerable: true, get: function () { return APIRequest_2.RequestType; } });
 var APIService_2 = require("./services/api/APIService");
 Object.defineProperty(exports, "MGHToolsGlobal", { enumerable: true, get: function () { return APIService_2.MGHToolsGlobal; } });
+var ITRMConnection_1 = require("./itrmachines/ai/ITRMConnection");
+Object.defineProperty(exports, "ITRMConnection", { enumerable: true, get: function () { return ITRMConnection_1.ITRMConnection; } });
+var SimpleITRMConnection_1 = require("./itrmachines/ai/SimpleITRMConnection");
+Object.defineProperty(exports, "SimpleITRMConnection", { enumerable: true, get: function () { return SimpleITRMConnection_1.SimpleITRMConnection; } });
 var Logger_1 = require("./itrmachines/log/Logger");
 Object.defineProperty(exports, "Logger", { enumerable: true, get: function () { return Logger_1.Logger; } });
 var LoggerManager_1 = require("./itrmachines/log/LoggerManager");
 Object.defineProperty(exports, "LoggerManager", { enumerable: true, get: function () { return LoggerManager_1.LoggerManager; } });
 var LoggerWebSocket_1 = require("./itrmachines/log/LoggerWebSocket");
 Object.defineProperty(exports, "LoggerWebSocket", { enumerable: true, get: function () { return LoggerWebSocket_1.LoggerWebSocket; } });
+var TokenTools_1 = require("./token/TokenTools");
+Object.defineProperty(exports, "TokenTools", { enumerable: true, get: function () { return TokenTools_1.TokenTools; } });
 //# sourceMappingURL=index.js.map

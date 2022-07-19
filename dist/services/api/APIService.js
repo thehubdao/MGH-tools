@@ -48,11 +48,11 @@ class APIService {
     }
     run(init) {
         return new Promise((resolve, reject) => {
-            this.app.listen(this.port, () => {
+            this.app.listen(this.port, () => __awaiter(this, void 0, void 0, function* () {
                 console.log(`⚡️[server]: Server is running at https://localhost:${this.port}`);
-                init();
+                yield init();
                 resolve(undefined);
-            });
+            }));
         });
     }
 }

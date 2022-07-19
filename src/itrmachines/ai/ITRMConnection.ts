@@ -75,19 +75,19 @@ export class ITRMConnection {
                 'Content-Type': 'application/json',
                 'Origin': this.domain
             }}).then(response => {
-                resolve(response);
+                resolve(response.data);
             }).catch(err => { reject(err); });
         });
     }
 
-    public getPredictionList(update: any, inputs: []): Promise<any> {
+    public getPredictionList(update: any, inputs: any[]): Promise<any> {
         return new Promise((resolve, reject) => {
             let url = this.modelService + "/modelUpdate/predictionListAPI/" + update.modelUpdateId + "/?apiKey=" + this.apiKey;
             axios.post(url, { inputs: inputs }, { headers: {
                 'Content-Type': 'application/json',
                 'Origin': this.domain
             }}).then(response => {
-                resolve(response);
+                resolve(response.data);
             }).catch(err => { reject(err); });
         });
     }

@@ -69,7 +69,7 @@ class ITRMConnection {
                     'Content-Type': 'application/json',
                     'Origin': this.domain
                 } }).then(response => {
-                resolve(response);
+                resolve(response.data);
             }).catch(err => { reject(err); });
         });
     }
@@ -80,7 +80,7 @@ class ITRMConnection {
                     'Content-Type': 'application/json',
                     'Origin': this.domain
                 } }).then(response => {
-                resolve(response);
+                resolve(response.data);
             }).catch(err => { reject(err); });
         });
     }

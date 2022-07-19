@@ -38,9 +38,9 @@ export class APIService implements Service {
 
     run(init: Function): Promise<any> {
         return new Promise((resolve, reject) => {
-            this.app.listen(this.port, () => {
+            this.app.listen(this.port, async () => {
                 console.log(`⚡️[server]: Server is running at https://localhost:${this.port}`);
-                init();
+                await init();
                 resolve(undefined);
             });
         });
