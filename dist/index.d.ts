@@ -9,3 +9,4 @@ export { Logger as Logger } from './itrmachines/log/Logger';
 export { LoggerManager as LoggerManager } from './itrmachines/log/LoggerManager';
 export { LoggerWebSocket as LoggerWebSocket } from './itrmachines/log/LoggerWebSocket';
 export { TokenTools as TokenTools } from './token/TokenTools';
+export { OpenseaCollectionManager as OpenseaCollectionManager } from './opensea/OpenseaCollectionManager';

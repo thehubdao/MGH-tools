@@ -7,9 +7,9 @@ export class SimpleITRMConnection {
         this.connection = connection;
     }
 
-    public getPrediction(modelUpdateId: any, input: any): Promise<any> {
+    public getPrediction(update: any, input: any): Promise<any> {
         return new Promise((resolve, reject) => {
-            this.connection.getPrediction(modelUpdateId, input).then(response => {
+            this.connection.getPrediction(update, input).then(response => {
                 resolve(response);
             }).catch(err => {
                 console.log("> An error has ocurred:", err);
@@ -18,9 +18,9 @@ export class SimpleITRMConnection {
         });
     }
 
-    public getPredictionList(modelUpdateId: any, inputs: any[]): Promise<any> {
+    public getPredictionList(update: any, inputs: any[]): Promise<any> {
         return new Promise((resolve, reject) => {
-            this.connection.getPredictionList(modelUpdateId, inputs).then(response => {
+            this.connection.getPredictionList(update, inputs).then(response => {
                 resolve(response);
             }).catch(err => {
                 console.log("> An error has ocurred:", err);

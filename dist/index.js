@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.TokenTools = exports.LoggerWebSocket = exports.LoggerManager = exports.Logger = exports.SimpleITRMConnection = exports.ITRMConnection = exports.MGHToolsGlobal = exports.RequestType = exports.APIRequest = exports.APIService = void 0;
+exports.OpenseaCollectionManager = exports.TokenTools = exports.LoggerWebSocket = exports.LoggerManager = exports.Logger = exports.SimpleITRMConnection = exports.ITRMConnection = exports.MGHToolsGlobal = exports.RequestType = exports.APIRequest = exports.APIService = void 0;
 var APIService_1 = require("./services/api/APIService");
 Object.defineProperty(exports, "APIService", { enumerable: true, get: function () { return APIService_1.APIService; } });
 var APIRequest_1 = require("./services/api/APIRequest");
@@ -21,4 +21,6 @@ var LoggerWebSocket_1 = require("./itrmachines/log/LoggerWebSocket");
 Object.defineProperty(exports, "LoggerWebSocket", { enumerable: true, get: function () { return LoggerWebSocket_1.LoggerWebSocket; } });
 var TokenTools_1 = require("./token/TokenTools");
 Object.defineProperty(exports, "TokenTools", { enumerable: true, get: function () { return TokenTools_1.TokenTools; } });
+var OpenseaCollectionManager_1 = require("./opensea/OpenseaCollectionManager");
+Object.defineProperty(exports, "OpenseaCollectionManager", { enumerable: true, get: function () { return OpenseaCollectionManager_1.OpenseaCollectionManager; } });
 //# sourceMappingURL=index.js.map
