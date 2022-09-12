@@ -23,7 +23,7 @@
 /// <reference types="mongoose/types/virtuals" />
 /// <reference types="mongoose" />
 /// <reference types="mongoose/types/inferschematype" />
-import { ModelManager } from "../ModelManager";
+import { ModelManager } from "../mongoose/ModelManager";
 import { IToken } from "./TokenDefinitions";
 export declare class TokenizedModelManager<S> extends ModelManager<S> {
     constructor(collection: string, definition: any);

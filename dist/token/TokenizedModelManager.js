@@ -10,7 +10,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.TokenizedModelManager = void 0;
-const ModelManager_1 = require("../ModelManager");
+const ModelManager_1 = require("../mongoose/ModelManager");
 class TokenizedModelManager extends ModelManager_1.ModelManager {
     constructor(collection, definition) {
         super(collection, definition);

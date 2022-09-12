@@ -1,4 +1,4 @@
-import { ModelManager } from "../ModelManager";
+import { ModelManager } from "../mongoose/ModelManager";
 import { IToken } from "./TokenDefinitions";
 
 export class TokenizedModelManager<S> extends ModelManager<S> {
