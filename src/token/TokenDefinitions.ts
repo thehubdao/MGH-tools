@@ -7,5 +7,5 @@ export interface HistoricalTransaction {
     eth_price: number,
     buyer: string,
     symbol: string,
-    market: string
+    broker: string
 }
