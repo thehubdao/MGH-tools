@@ -10,13 +10,13 @@ export class ModelManager<S> {
         this.model = model<S>(collection, schema);
     }
 
-    public async create(datum: any) {
+    public async create(datum: S) {
         let token = await new this.model(datum);
         await token.save();
         return token;
     }
 
-    public async createMany(data: any[]) {
+    public async createMany(data: S[]) {
         let writes: any[] = [];
         for (let datum of data) {
             writes.push({

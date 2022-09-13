@@ -1,17 +1,8 @@
 import { ModelManager } from "../mongoose/ModelManager";
-import { IToken } from "./TokenDefinitions";
 
 export class TokenizedModelManager<S> extends ModelManager<S> {
     constructor(collection: string, definition: any) {
         super(collection, definition);
-    }
-
-    public async create(datum: IToken) {
-        return await super.create(datum);
-    }
-
-    public async createMany(data: IToken[]) {
-        return await super.createMany(data);
     }
 
     public async find(tokenId: string) {

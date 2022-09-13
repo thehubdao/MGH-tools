@@ -9,7 +9,3 @@ export interface HistoricalTransaction {
     symbol: string,
     market: string
 }
-
-export interface IToken {
-    tokenId: string
-}

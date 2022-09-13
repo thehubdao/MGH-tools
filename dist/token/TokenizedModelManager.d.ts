@@ -24,11 +24,8 @@
 /// <reference types="mongoose" />
 /// <reference types="mongoose/types/inferschematype" />
 import { ModelManager } from "../mongoose/ModelManager";
-import { IToken } from "./TokenDefinitions";
 export declare class TokenizedModelManager<S> extends ModelManager<S> {
     constructor(collection: string, definition: any);
-    create(datum: IToken): Promise<import("mongoose").HydratedDocument<S, {}, unknown>>;
-    createMany(data: IToken[]): Promise<import("mongodb").BulkWriteResult>;
     find(tokenId: string): Promise<import("mongoose").HydratedDocument<S, {}, {}> | null>;
     findMany(tokenIds: string[]): Promise<import("mongoose").HydratedDocument<S, {}, {}>[]>;
     update(token: any): Promise<import("mongodb").UpdateResult>;

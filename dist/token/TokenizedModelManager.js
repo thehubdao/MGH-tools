@@ -15,22 +15,6 @@ class TokenizedModelManager extends ModelManager_1.ModelManager {
     constructor(collection, definition) {
         super(collection, definition);
     }
-    create(datum) {
-        const _super = Object.create(null, {
-            create: { get: () => super.create }
-        });
-        return __awaiter(this, void 0, void 0, function* () {
-            return yield _super.create.call(this, datum);
-        });
-    }
-    createMany(data) {
-        const _super = Object.create(null, {
-            createMany: { get: () => super.createMany }
-        });
-        return __awaiter(this, void 0, void 0, function* () {
-            return yield _super.createMany.call(this, data);
-        });
-    }
     find(tokenId) {
         const _super = Object.create(null, {
             find: { get: () => super.find }

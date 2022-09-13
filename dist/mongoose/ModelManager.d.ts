@@ -27,8 +27,8 @@ export declare class ModelManager<S> {
     collection: string;
     protected model: Model<S>;
     constructor(collection: string, definition: any);
-    create(datum: any): Promise<import("mongoose").HydratedDocument<S, {}, unknown>>;
-    createMany(data: any[]): Promise<import("mongodb").BulkWriteResult>;
+    create(datum: S): Promise<import("mongoose").HydratedDocument<S, {}, unknown>>;
+    createMany(data: S[]): Promise<import("mongodb").BulkWriteResult>;
     find(filter: any): Promise<import("mongoose").HydratedDocument<S, {}, {}> | null>;
     findMany(filter: any): Promise<import("mongoose").HydratedDocument<S, {}, {}>[]>;
     findAll(): Promise<any>;

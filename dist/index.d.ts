@@ -10,8 +10,7 @@ export { LoggerManager as LoggerManager } from './itrmachines/log/LoggerManager'
 export { LoggerWebSocket as LoggerWebSocket } from './itrmachines/log/LoggerWebSocket';
 export { ModelManager as ModelManager } from './mongoose/ModelManager';
 export { OpenseaCollectionManager as OpenseaCollectionManager } from './opensea/OpenseaCollectionManager';
-export { HistoricalTransaction as TokenDefinitions } from './token/TokenDefinitions';
-export { IToken as IToken } from './token/TokenDefinitions';
+export { HistoricalTransaction as HistoricalTransaction } from './token/TokenDefinitions';
 export { TokenizedModelManager as TokenizedModelManager } from './token/TokenizedModelManager';
 export { getVariation as getVariation } from './token/TokenTools';
 export { findOldestPrice as findOldestPrice } from './token/TokenTools';
