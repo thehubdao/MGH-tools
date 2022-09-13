@@ -8,11 +8,11 @@
     "/dist"
   ],
   "scripts": {
-    "build": "tsc --skipLibCheck",
+    "build": "rimraf ./dist && tsc --skipLibCheck",
     "publish-lib": "npm run build && npm publish",
     "publish-beta": "npm run build && npm publish --tag beta",
     "publish-dryrun": "npm run build && npm publish --dry-run",
-    "link": "tsc --skipLibCheck && npm link"
+    "link": "npm run build && npm link"
   },
   "repository": {
     "type": "git",
@@ -33,6 +33,7 @@
   "dependencies": {
     "@types/ws": "^8.5.3",
     "axios": "^0.27.2",
-    "mongoose": "^6.6.0"
+    "mongoose": "^6.6.0",
+    "rimraf": "^3.0.2"
   }
 }
