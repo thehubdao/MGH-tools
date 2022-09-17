@@ -1,8 +1,5 @@
 import axios from 'axios';
-
-export enum Coin {
-    ATRI, BTC, CUBE, DAI, ETH, MANA, RARI, SAND, SCOTT, USDC, WBTC, WETH
-}
+import { Coin } from './Coin';
 
 export class PriceFinder {
     private prices: any = {};

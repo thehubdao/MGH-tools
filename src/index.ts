@@ -15,6 +15,7 @@ export { ModelManager as ModelManager } from './mongoose/ModelManager';
 
 export { OpenseaCollectionManager as OpenseaCollectionManager } from './opensea/OpenseaCollectionManager';
 
+export { Coin as Coin } from './token/coingecko/Coin';
 export { PriceFinder as PriceFinder } from './token/coingecko/PriceFinder';
 export { HistoricalTransaction as HistoricalTransaction } from './token/TokenDefinitions';
 export { TokenizedModelManager as TokenizedModelManager } from './token/TokenizedModelManager';
