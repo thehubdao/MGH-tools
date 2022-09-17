@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.waitFor = exports.isValidTokenId = exports.findOldestPrice = exports.getVariation = exports.TokenizedModelManager = exports.PriceFinder = exports.OpenseaCollectionManager = exports.ModelManager = exports.LoggerWebSocket = exports.LoggerManager = exports.Logger = exports.SimpleITRMConnection = exports.ITRMConnection = exports.MGHToolsGlobal = exports.RequestType = exports.APIRequest = exports.APIService = void 0;
+exports.waitFor = exports.isValidTokenId = exports.findOldestPrice = exports.getVariation = exports.TokenizedModelManager = exports.PriceFinder = exports.Coin = exports.OpenseaCollectionManager = exports.ModelManager = exports.LoggerWebSocket = exports.LoggerManager = exports.Logger = exports.SimpleITRMConnection = exports.ITRMConnection = exports.MGHToolsGlobal = exports.RequestType = exports.APIRequest = exports.APIService = void 0;
 var APIService_1 = require("./services/api/APIService");
 Object.defineProperty(exports, "APIService", { enumerable: true, get: function () { return APIService_1.APIService; } });
 var APIRequest_1 = require("./services/api/APIRequest");
@@ -23,6 +23,8 @@ var ModelManager_1 = require("./mongoose/ModelManager");
 Object.defineProperty(exports, "ModelManager", { enumerable: true, get: function () { return ModelManager_1.ModelManager; } });
 var OpenseaCollectionManager_1 = require("./opensea/OpenseaCollectionManager");
 Object.defineProperty(exports, "OpenseaCollectionManager", { enumerable: true, get: function () { return OpenseaCollectionManager_1.OpenseaCollectionManager; } });
+var Coin_1 = require("./token/coingecko/Coin");
+Object.defineProperty(exports, "Coin", { enumerable: true, get: function () { return Coin_1.Coin; } });
 var PriceFinder_1 = require("./token/coingecko/PriceFinder");
 Object.defineProperty(exports, "PriceFinder", { enumerable: true, get: function () { return PriceFinder_1.PriceFinder; } });
 var TokenizedModelManager_1 = require("./token/TokenizedModelManager");

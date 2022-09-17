@@ -12,23 +12,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.PriceFinder = exports.Coin = void 0;
+exports.PriceFinder = void 0;
 const axios_1 = __importDefault(require("axios"));
-var Coin;
-(function (Coin) {
-    Coin[Coin["ATRI"] = 0] = "ATRI";
-    Coin[Coin["BTC"] = 1] = "BTC";
-    Coin[Coin["CUBE"] = 2] = "CUBE";
-    Coin[Coin["DAI"] = 3] = "DAI";
-    Coin[Coin["ETH"] = 4] = "ETH";
-    Coin[Coin["MANA"] = 5] = "MANA";
-    Coin[Coin["RARI"] = 6] = "RARI";
-    Coin[Coin["SAND"] = 7] = "SAND";
-    Coin[Coin["SCOTT"] = 8] = "SCOTT";
-    Coin[Coin["USDC"] = 9] = "USDC";
-    Coin[Coin["WBTC"] = 10] = "WBTC";
-    Coin[Coin["WETH"] = 11] = "WETH";
-})(Coin = exports.Coin || (exports.Coin = {}));
+const Coin_1 = require("./Coin");
 class PriceFinder {
     constructor(pair) {
         this.prices = {};
@@ -39,7 +25,7 @@ class PriceFinder {
             date = date !== null && date !== void 0 ? date : new Date();
             let id = this.parseSymbolId(symbol);
             let key = (10000 * date.getFullYear()) + (100 * (date.getMonth() + 1)) + date.getDate();
-            if (symbol == Coin.CUBE)
+            if (symbol == Coin_1.Coin.CUBE)
                 key = Math.max(key, 20200221);
             return yield this.findPrice(id, "" + key);
         });
@@ -47,7 +33,7 @@ class PriceFinder {
     findPrice(symbol, date) {
         return __awaiter(this, void 0, void 0, function* () {
             let key = symbol + "_" + date;
-            if (this.prices[key])
+            if (!this.prices[key])
                 return new Promise((resolve, reject) => {
                     let url = "https://api.coingecko.com/api/v3/coins/" + symbol + "/history?date="
                         + date.substring(6) + "-" + date.substring(4, 6) + "-" + date.substring(0, 4);
@@ -65,16 +51,16 @@ class PriceFinder {
     }
     parseSymbolId(symbol) {
         switch (symbol) {
-            case Coin.ATRI: return "atari";
-            case Coin.BTC: return "bitcoin";
-            case Coin.CUBE: return "somnium-space-cubes";
-            case Coin.DAI: return "dai";
-            case Coin.MANA: return "decentraland";
-            case Coin.RARI: return "rarible";
-            case Coin.SAND: return "the-sandbox";
-            case Coin.SCOTT: return "scotty-beam";
-            case Coin.USDC: return "usd-coin";
-            case Coin.WBTC: return "bitcoin";
+            case Coin_1.Coin.ATRI: return "atari";
+            case Coin_1.Coin.BTC: return "bitcoin";
+            case Coin_1.Coin.CUBE: return "somnium-space-cubes";
+            case Coin_1.Coin.DAI: return "dai";
+            case Coin_1.Coin.MANA: return "decentraland";
+            case Coin_1.Coin.RARI: return "rarible";
+            case Coin_1.Coin.SAND: return "the-sandbox";
+            case Coin_1.Coin.SCOTT: return "scotty-beam";
+            case Coin_1.Coin.USDC: return "usd-coin";
+            case Coin_1.Coin.WBTC: return "bitcoin";
             default: return "ethereum";
         }
     }

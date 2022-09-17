@@ -20,7 +20,7 @@ export class PriceFinder {
 
     private async findPrice(symbol: string, date: string) {
         let key = symbol + "_" + date;
-        if (this.prices[key])
+        if (!this.prices[key])
             return new Promise((resolve, reject) => {
                 let url = "https://api.coingecko.com/api/v3/coins/" + symbol + "/history?date="
 		            + date.substring(6) + "-" + date.substring(4, 6) + "-" + date.substring(0, 4);
