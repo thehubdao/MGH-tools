@@ -12,7 +12,7 @@ export class SimpleITRMConnection {
             this.connection.getPrediction(update, input).then(response => {
                 resolve(response);
             }).catch(err => {
-                console.log("> An error has ocurred:", err);
+                console.log("> An error has ocurred:", err.message);
                 resolve(undefined);
             });
         });
@@ -23,7 +23,7 @@ export class SimpleITRMConnection {
             this.connection.getPredictionList(update, inputs).then(response => {
                 resolve(response);
             }).catch(err => {
-                console.log("> An error has ocurred:", err);
+                console.log("> An error has ocurred in getPredictionList:", err.message);
                 resolve(undefined);
             });
         });
@@ -34,7 +34,7 @@ export class SimpleITRMConnection {
             this.connection.getUpdates(product).then(response => {
                 resolve(response);
             }).catch(err => {
-                console.log("> An error has ocurred:", err);
+                console.log("> An error has ocurred:", err.message);
                 resolve(undefined);
             });
         });
@@ -45,7 +45,7 @@ export class SimpleITRMConnection {
             this.connection.getHistoricalPredictions(update).then(response => {
                 resolve(response);
             }).catch(err => {
-                console.log("> An error has ocurred:", err);
+                console.log("> An error has ocurred:", err.message);
                 resolve(undefined);
             });
         });
@@ -57,7 +57,7 @@ export class SimpleITRMConnection {
             this.connection.findProduct(name).then(response => {
                 resolve(response);
             }).catch(err => {
-                console.log("> An error has ocurred:", err);
+                console.log("> An error has ocurred:", err.message);
                 resolve(undefined);
             });
         });

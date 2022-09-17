@@ -19,7 +19,7 @@ export class APIService implements Service {
         MGHToolsGlobal.serviceSettings = { memory: {}, requests: {} };
     }
 
-    addRequest(request: APIRequest) {
+    public addRequest(request: APIRequest) {
         MGHToolsGlobal.serviceSettings.requests[request.path] = request;
         if (request.type == RequestType.GET)
             this.app.get(request.path, this.apply);
@@ -29,14 +29,14 @@ export class APIService implements Service {
             this.app.put(request.path, this.apply);
     }
 
-    async apply(req: Request, res: Response) {
+    public async apply(req: Request, res: Response) {
         let path: string = req.route.path;
         if (MGHToolsGlobal.serviceSettings.requests[path])
             return await MGHToolsGlobal.serviceSettings.requests[path].apply(MGHToolsGlobal.serviceSettings.memory, req, res);
         return res.status(400).json({ message: "Path route '" + path + "' does not exists" });
     }
 
-    run(init: Function): Promise<any> {
+    public run(init: Function): Promise<any> {
         return new Promise((resolve, reject) => {
             this.app.listen(this.port, async () => {
                 console.log(`⚡️[server]: Server is running at https://localhost:${this.port}`);
