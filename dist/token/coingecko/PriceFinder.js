@@ -25,10 +25,25 @@ class PriceFinder {
             date = date !== null && date !== void 0 ? date : new Date();
             let id = this.parseSymbolId(symbol);
             let key = (10000 * date.getFullYear()) + (100 * (date.getMonth() + 1)) + date.getDate();
-            if (symbol == Coin_1.Coin.CUBE)
-                key = Math.max(key, 20200221);
-            return yield this.findPrice(id, "" + key);
+            return yield this.findPrice(id, "" + this.adjustDate(symbol, key));
         });
+    }
+    adjustDate(symbol, date) {
+        switch (symbol) {
+            case Coin_1.Coin.APE: return Math.max(date, 20220317);
+            case Coin_1.Coin.ARTX: return Math.max(date, 20210404);
+            case Coin_1.Coin.ATRI: return Math.max(date, 20201102);
+            case Coin_1.Coin.BTC: return Math.max(date, 20130428);
+            case Coin_1.Coin.CUBE: return Math.max(date, 20200221);
+            case Coin_1.Coin.DAI: return Math.max(date, 20191119);
+            case Coin_1.Coin.MANA: return Math.max(date, 20171028);
+            case Coin_1.Coin.RARI: return Math.max(date, 20200717);
+            case Coin_1.Coin.SAND: return Math.max(date, 20200814);
+            case Coin_1.Coin.SCOTT: return Math.max(date, 20211220);
+            case Coin_1.Coin.USDC: return Math.max(date, 20181005);
+            case Coin_1.Coin.WBTC: return Math.max(date, 20130428);
+            default: return Math.max(date, 20150807);
+        }
     }
     findPrice(symbol, date) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -51,6 +66,8 @@ class PriceFinder {
     }
     parseSymbolId(symbol) {
         switch (symbol) {
+            case Coin_1.Coin.APE: return "apecoin";
+            case Coin_1.Coin.ARTX: return "artx";
             case Coin_1.Coin.ATRI: return "atari";
             case Coin_1.Coin.BTC: return "bitcoin";
             case Coin_1.Coin.CUBE: return "somnium-space-cubes";

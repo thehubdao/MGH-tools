@@ -13,9 +13,25 @@ export class PriceFinder {
         date = date ?? new Date();
         let id = this.parseSymbolId(symbol);
         let key = (10000 * date.getFullYear()) + (100 * (date.getMonth() + 1)) + date.getDate();
-        if (symbol == Coin.CUBE)
-            key = Math.max(key, 20200221);
-        return await this.findPrice(id, "" + key);
+        return await this.findPrice(id, "" + this.adjustDate(symbol, key));
+    }
+
+    private adjustDate(symbol: Coin, date: number) {
+        switch (symbol) {
+            case Coin.APE:   return Math.max(date, 20220317);
+            case Coin.ARTX:  return Math.max(date, 20210404);
+            case Coin.ATRI:  return Math.max(date, 20201102);
+            case Coin.BTC:   return Math.max(date, 20130428);
+            case Coin.CUBE:  return Math.max(date, 20200221);
+            case Coin.DAI:   return Math.max(date, 20191119);
+            case Coin.MANA:  return Math.max(date, 20171028);
+            case Coin.RARI:  return Math.max(date, 20200717);
+            case Coin.SAND:  return Math.max(date, 20200814);
+            case Coin.SCOTT: return Math.max(date, 20211220);
+            case Coin.USDC:  return Math.max(date, 20181005);
+            case Coin.WBTC:  return Math.max(date, 20130428);
+            default: return Math.max(date, 20150807);
+        }
     }
 
     private async findPrice(symbol: string, date: string) {
@@ -38,16 +54,18 @@ export class PriceFinder {
 
     parseSymbolId(symbol: Coin) {
         switch (symbol) {
-            case Coin.ATRI: return "atari";
-            case Coin.BTC: return "bitcoin";
-            case Coin.CUBE: return "somnium-space-cubes";
-            case Coin.DAI: return "dai";
-            case Coin.MANA: return "decentraland";
-            case Coin.RARI: return "rarible";
-            case Coin.SAND: return "the-sandbox";
+            case Coin.APE:   return "apecoin";
+            case Coin.ARTX:  return "artx";
+            case Coin.ATRI:  return "atari";
+            case Coin.BTC:   return "bitcoin";
+            case Coin.CUBE:  return "somnium-space-cubes";
+            case Coin.DAI:   return "dai";
+            case Coin.MANA:  return "decentraland";
+            case Coin.RARI:  return "rarible";
+            case Coin.SAND:  return "the-sandbox";
             case Coin.SCOTT: return "scotty-beam";
-            case Coin.USDC: return "usd-coin";
-            case Coin.WBTC: return "bitcoin";
+            case Coin.USDC:  return "usd-coin";
+            case Coin.WBTC:  return "bitcoin";
             default: return "ethereum";
         }
     }
