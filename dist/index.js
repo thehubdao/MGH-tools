@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.waitFor = exports.isValidTokenId = exports.findOldestPrice = exports.getVariation = exports.TokenizedModelManager = exports.PriceFinder = exports.Coin = exports.OpenseaCollectionManager = exports.ModelManager = exports.LoggerWebSocket = exports.LoggerManager = exports.Logger = exports.SimpleITRMConnection = exports.ITRMConnection = exports.MGHToolsGlobal = exports.RequestType = exports.APIRequest = exports.APIService = void 0;
+exports.StdDeviation = exports.Skewness = exports.R2 = exports.MedAPE = exports.MAPE = exports.StatsGroup = exports.waitFor = exports.isValidTokenId = exports.findOldestPrice = exports.getVariation = exports.TokenizedModelManager = exports.PriceFinder = exports.Coin = exports.OpenseaCollectionManager = exports.ModelManager = exports.LoggerWebSocket = exports.LoggerManager = exports.Logger = exports.SimpleITRMConnection = exports.ITRMConnection = exports.MGHToolsGlobal = exports.RequestType = exports.APIRequest = exports.APIService = void 0;
 var APIService_1 = require("./services/api/APIService");
 Object.defineProperty(exports, "APIService", { enumerable: true, get: function () { return APIService_1.APIService; } });
 var APIRequest_1 = require("./services/api/APIRequest");
@@ -37,4 +37,16 @@ var TokenTools_3 = require("./token/TokenTools");
 Object.defineProperty(exports, "isValidTokenId", { enumerable: true, get: function () { return TokenTools_3.isValidTokenId; } });
 var TokenTools_4 = require("./token/TokenTools");
 Object.defineProperty(exports, "waitFor", { enumerable: true, get: function () { return TokenTools_4.waitFor; } });
+var StatsGroup_1 = require("./math/StatsGroup");
+Object.defineProperty(exports, "StatsGroup", { enumerable: true, get: function () { return StatsGroup_1.StatsGroup; } });
+var MAPE_1 = require("./math/stats/MAPE");
+Object.defineProperty(exports, "MAPE", { enumerable: true, get: function () { return MAPE_1.MAPE; } });
+var MedAPE_1 = require("./math/stats/MedAPE");
+Object.defineProperty(exports, "MedAPE", { enumerable: true, get: function () { return MedAPE_1.MedAPE; } });
+var R2_1 = require("./math/stats/R2");
+Object.defineProperty(exports, "R2", { enumerable: true, get: function () { return R2_1.R2; } });
+var Skewness_1 = require("./math/stats/Skewness");
+Object.defineProperty(exports, "Skewness", { enumerable: true, get: function () { return Skewness_1.Skewness; } });
+var StdDeviation_1 = require("./math/stats/StdDeviation");
+Object.defineProperty(exports, "StdDeviation", { enumerable: true, get: function () { return StdDeviation_1.StdDeviation; } });
 //# sourceMappingURL=index.js.map

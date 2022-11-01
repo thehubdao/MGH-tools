@@ -1,6 +1,6 @@
 {
   "name": "mgh-tools",
-  "version": "1.0.20",
+  "version": "1.0.21",
   "description": "Library for services tools development",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

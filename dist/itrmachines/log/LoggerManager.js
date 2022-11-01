@@ -54,6 +54,7 @@ class LoggerManager {
                 console.log("> requesting:", executionId);
                 client.send(executionId);
             });
+            logs.sort(function (a, b) { return a.timestamp - b.timestamp; });
             console.log("> logs:", logs.length);
             return logs;
         });
