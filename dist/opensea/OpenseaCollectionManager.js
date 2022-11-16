@@ -45,8 +45,8 @@ class OpenseaCollectionManager {
                 this.data = Object.assign(Object.assign({}, this.data), response.data);
                 resolve(response.data);
             }).catch(err => {
-                console.log("> an error has ocurred when requesting collection stats:", err);
-                reject(err);
+                console.log("> an error has ocurred when requesting collection stats:", err.response);
+                resolve(this.data);
             });
         });
     }
