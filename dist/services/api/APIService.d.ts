@@ -7,8 +7,11 @@ export declare namespace MGHToolsGlobal {
 export declare class APIService implements Service {
     protected app: Express;
     protected port: string;
-    constructor(port: string);
+    protected service: string;
+    protected database: string;
+    constructor(service: string, port: string, database: string);
     addRequest(request: APIRequest): void;
     apply(req: Request, res: Response): Promise<any>;
     run(init: Function): Promise<any>;
+    update(): Promise<void>;
 }
