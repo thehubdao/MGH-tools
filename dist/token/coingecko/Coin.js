@@ -11,11 +11,12 @@ var Coin;
     Coin[Coin["DAI"] = 5] = "DAI";
     Coin[Coin["ETH"] = 6] = "ETH";
     Coin[Coin["MANA"] = 7] = "MANA";
-    Coin[Coin["RARI"] = 8] = "RARI";
-    Coin[Coin["SAND"] = 9] = "SAND";
-    Coin[Coin["SCOTT"] = 10] = "SCOTT";
-    Coin[Coin["USDC"] = 11] = "USDC";
-    Coin[Coin["WBTC"] = 12] = "WBTC";
-    Coin[Coin["WETH"] = 13] = "WETH";
+    Coin[Coin["MATIC"] = 8] = "MATIC";
+    Coin[Coin["RARI"] = 9] = "RARI";
+    Coin[Coin["SAND"] = 10] = "SAND";
+    Coin[Coin["SCOTT"] = 11] = "SCOTT";
+    Coin[Coin["USDC"] = 12] = "USDC";
+    Coin[Coin["WBTC"] = 13] = "WBTC";
+    Coin[Coin["WETH"] = 14] = "WETH";
 })(Coin = exports.Coin || (exports.Coin = {}));
 //# sourceMappingURL=Coin.js.map

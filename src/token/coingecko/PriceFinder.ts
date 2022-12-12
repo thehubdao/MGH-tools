@@ -25,6 +25,7 @@ export class PriceFinder {
             case Coin.CUBE:  return Math.max(date, 20200221);
             case Coin.DAI:   return Math.max(date, 20191119);
             case Coin.MANA:  return Math.max(date, 20171028);
+            case Coin.MATIC:  return Math.max(date, 20190427);
             case Coin.RARI:  return Math.max(date, 20200717);
             case Coin.SAND:  return Math.max(date, 20200814);
             case Coin.SCOTT: return Math.max(date, 20211220);
@@ -61,6 +62,7 @@ export class PriceFinder {
             case Coin.CUBE:  return "somnium-space-cubes";
             case Coin.DAI:   return "dai";
             case Coin.MANA:  return "decentraland";
+            case Coin.MATIC:  return "matic-network";
             case Coin.RARI:  return "rarible";
             case Coin.SAND:  return "the-sandbox";
             case Coin.SCOTT: return "scotty-beam";

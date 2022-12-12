@@ -7,10 +7,11 @@ export declare enum Coin {
     DAI = 5,
     ETH = 6,
     MANA = 7,
-    RARI = 8,
-    SAND = 9,
-    SCOTT = 10,
-    USDC = 11,
-    WBTC = 12,
-    WETH = 13
+    MATIC = 8,
+    RARI = 9,
+    SAND = 10,
+    SCOTT = 11,
+    USDC = 12,
+    WBTC = 13,
+    WETH = 14
 }
