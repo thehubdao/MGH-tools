@@ -29,15 +29,15 @@ export class OpenseaAPIConnection {
 
     private request(url: string) {
         return new Promise<any>(async (resolve, reject) => {
-            waitFor(100);
+            waitFor(150);
             axios.get(url, { headers: {
                 'Content-Type': 'application/json',
                 'X-API-KEY': this.apiKey,
                 "Accept-Encoding": "*"
             }}).then(response => {
-                resolve(response.data?.orders);
+                resolve(response?.data?.orders);
             }).catch(err => {
-                console.log("> an error has ocurred when requesting orders:", err.response);
+                console.log("> an error has ocurred when requesting orders:", err.response.data);
                 waitFor(3000);
                 resolve(undefined);
             });

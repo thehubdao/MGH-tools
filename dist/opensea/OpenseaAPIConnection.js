@@ -38,16 +38,16 @@ class OpenseaAPIConnection {
     }
     request(url) {
         return new Promise((resolve, reject) => __awaiter(this, void 0, void 0, function* () {
-            (0, TokenTools_1.waitFor)(100);
+            (0, TokenTools_1.waitFor)(150);
             axios_1.default.get(url, { headers: {
                     'Content-Type': 'application/json',
                     'X-API-KEY': this.apiKey,
                     "Accept-Encoding": "*"
                 } }).then(response => {
                 var _a;
-                resolve((_a = response.data) === null || _a === void 0 ? void 0 : _a.orders);
+                resolve((_a = response === null || response === void 0 ? void 0 : response.data) === null || _a === void 0 ? void 0 : _a.orders);
             }).catch(err => {
-                console.log("> an error has ocurred when requesting orders:", err.response);
+                console.log("> an error has ocurred when requesting orders:", err.response.data);
                 (0, TokenTools_1.waitFor)(3000);
                 resolve(undefined);
             });

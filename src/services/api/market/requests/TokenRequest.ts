@@ -10,10 +10,10 @@ export class TokenRequest extends APIRequest {
         const { name } = req.params;
         let collection = await memory.market.collectionManager.find(name);
         if (collection) {
-            const { tokenIds } = req.body;
-            if (!tokenIds)
+            const { tokenId } = req.query;
+            if (!tokenId)
                 return res.status(400).send({ err: "property 'tokenIds' was not found in body" });
-            return res.status(200).json({ results: this.clean(await memory.market.tokenManager.findManyByCollection(collection, tokenIds)) });
+            return res.status(200).json({ results: this.clean(await memory.market.tokenManager.findManyByCollection(collection, Array.isArray(tokenId) ? tokenId : tokenId.toString().split(','))) });
         }
         return res.status(400).json({ message: "Collection '" + name + "' was not found" });
     }
