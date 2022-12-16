@@ -1,8 +1,9 @@
 import { Request, Response } from 'express';
 export declare enum RequestType {
-    GET = 0,
-    POST = 1,
-    PUT = 2
+    GET = "GET",
+    POST = "POST",
+    PUT = "PUT",
+    DELETE = "DELETE"
 }
 export declare abstract class APIRequest {
     type: RequestType;

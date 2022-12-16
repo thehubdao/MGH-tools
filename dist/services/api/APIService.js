@@ -23,44 +23,45 @@ var MGHToolsGlobal;
     MGHToolsGlobal.serviceSettings = { memory: {}, requests: {}, service: '' };
 })(MGHToolsGlobal = exports.MGHToolsGlobal || (exports.MGHToolsGlobal = {}));
 class APIService {
-    constructor(service, port, database) {
+    constructor(config) {
         this.app = (0, express_1.default)();
-        this.port = port;
-        this.service = service;
-        this.database = database;
+        this.config = config;
         this.app.use(express_1.default.json());
         this.app.get('/', (req, res) => {
             return res.send('Server working!');
         });
-        MGHToolsGlobal.serviceSettings = { memory: {}, requests: {}, service: service };
+        MGHToolsGlobal.serviceSettings = { memory: {}, requests: {}, service: config.service };
         this.addRequest(new StatsRequest_1.StatsRequest());
     }
     addRequest(request) {
-        MGHToolsGlobal.serviceSettings.requests[request.path] = request;
-        if (request.type == APIRequest_1.RequestType.GET)
+        MGHToolsGlobal.serviceSettings.requests[request.type + "_" + request.path] = request;
+        if (request.type === APIRequest_1.RequestType.GET)
             this.app.get(request.path, this.apply);
-        else if (request.type == APIRequest_1.RequestType.POST)
+        else if (request.type === APIRequest_1.RequestType.POST)
             this.app.post(request.path, this.apply);
-        else if (request.type == APIRequest_1.RequestType.PUT)
+        else if (request.type === APIRequest_1.RequestType.PUT)
             this.app.put(request.path, this.apply);
+        else if (request.type === APIRequest_1.RequestType.DELETE)
+            this.app.delete(request.path, this.apply);
     }
     apply(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            let path = req.route.path;
-            yield StatsManager_1.statsManager.count(MGHToolsGlobal.serviceSettings.service, path);
-            if (MGHToolsGlobal.serviceSettings.requests[path])
-                return yield MGHToolsGlobal.serviceSettings.requests[path].apply(MGHToolsGlobal.serviceSettings.memory, req, res);
-            return res.status(400).json({ message: "Path route '" + path + "' does not exists" });
+            let request = MGHToolsGlobal.serviceSettings.requests[req.method + "_" + req.route.path];
+            if (request) {
+                yield StatsManager_1.statsManager.count(MGHToolsGlobal.serviceSettings.service, request.path);
+                return yield request.apply(MGHToolsGlobal.serviceSettings.memory, req, res);
+            }
+            return res.status(400).json({ message: "Path route '" + req.path + "' in method '" + req.method + "' does not exists", req: req });
         });
     }
     run(init) {
         return new Promise((resolve, reject) => {
-            this.app.listen(this.port, () => __awaiter(this, void 0, void 0, function* () {
-                console.log(`⚡️[server]: Server is running at https://localhost:${this.port}`);
+            this.app.listen(this.config.port, () => __awaiter(this, void 0, void 0, function* () {
+                console.log(`⚡️[server]: Server is running at https://localhost:${this.config.port}`);
                 console.log("> connecting to mongo database");
-                yield (0, mongoose_1.connect)(this.database);
+                yield (0, mongoose_1.connect)(this.config.database);
                 console.log("> initializing stats");
-                yield StatsManager_1.statsManager.init(this.service);
+                yield StatsManager_1.statsManager.init(this.config.service);
                 yield init();
                 resolve(undefined);
             }));

@@ -62,4 +62,12 @@ export class ModelManager<S> {
     public async delete(filter: any) {
         return await this.model.deleteOne(filter);
     }
+
+    public async deleteMany(filter: any) {
+        await this.model.deleteMany(filter);
+    }
+
+    public async countDocuments(filter: any) {
+        return await this.model.countDocuments(filter);
+    }
 }

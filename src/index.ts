@@ -1,9 +1,19 @@
 export { Service as Service } from './services/Service';
 
-export { APIService as APIService } from './services/api/APIService';
+export { APIService as APIService, APIServiceConfig as APIServiceConfig } from './services/api/APIService';
 export { APIRequest as APIRequest } from './services/api/APIRequest';
 export { RequestType as RequestType } from './services/api/APIRequest';
 export { MGHToolsGlobal as MGHToolsGlobal } from './services/api/APIService';
+export { MarketAPIService as MarketAPIService, MarketAPIServiceConfig as MarketAPIServiceConfig } from './services/api/market/MarketAPIService';
+export { CollectionCreator as CollectionCreator } from './services/api/market/requests/CollectionCreator';
+export { CollectionEraser as CollectionEraser } from './services/api/market/requests/CollectionEraser';
+export { CollectionRequest as CollectionRequest } from './services/api/market/requests/CollectionRequest';
+export { ContractCreator as ContractCreator } from './services/api/market/requests/ContractCreator';
+export { ContractEditor as ContractEditor } from './services/api/market/requests/ContractEditor';
+export { ContractEraser as ContractEraser } from './services/api/market/requests/ContractEraser';
+export { ContractRequest as ContractRequest } from './services/api/market/requests/ContractRequest';
+export { TokenCreator as TokenCreator } from './services/api/market/requests/TokenCreator';
+export { TokenRequest as TokenRequest } from './services/api/market/requests/TokenRequest';
 
 export { ITRMConnection as ITRMConnection } from './itrmachines/ai/ITRMConnection';
 export { SimpleITRMConnection as SimpleITRMConnection } from './itrmachines/ai/SimpleITRMConnection';
@@ -17,6 +27,8 @@ export { OpenseaCollectionManager as OpenseaCollectionManager } from './opensea/
 
 export { Coin as Coin } from './token/coingecko/Coin';
 export { PriceFinder as PriceFinder } from './token/coingecko/PriceFinder';
+export { IContract as IContract, ICollection as ICollection, CollectionManager as CollectionManager } from './services/api/market/mongoose/CollectionManager';
+export { TokenManager as TokenManager, IPrice as IPrice, ISale as ISale, IOrder as IOrder, IMaker as IMaker } from './services/api/market/mongoose/TokenManager';
 export { HistoricalTransaction as HistoricalTransaction } from './token/TokenDefinitions';
 export { TokenizedModelManager as TokenizedModelManager } from './token/TokenizedModelManager';
 export { getVariation as getVariation } from './token/TokenTools';

@@ -36,4 +36,6 @@ export declare class ModelManager<S> {
     update(filter: any, data: any): Promise<import("mongodb").UpdateResult>;
     bulkWrite(writes: any[], options?: any): Promise<void>;
     delete(filter: any): Promise<import("mongodb").DeleteResult>;
+    deleteMany(filter: any): Promise<void>;
+    countDocuments(filter: any): Promise<number>;
 }

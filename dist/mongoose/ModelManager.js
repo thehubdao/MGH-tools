@@ -79,6 +79,16 @@ class ModelManager {
             return yield this.model.deleteOne(filter);
         });
     }
+    deleteMany(filter) {
+        return __awaiter(this, void 0, void 0, function* () {
+            yield this.model.deleteMany(filter);
+        });
+    }
+    countDocuments(filter) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield this.model.countDocuments(filter);
+        });
+    }
 }
 exports.ModelManager = ModelManager;
 //# sourceMappingURL=ModelManager.js.map

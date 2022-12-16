@@ -53,7 +53,7 @@ export class PriceFinder {
         return this.prices[key];
     }
 
-    parseSymbolId(symbol: Coin) {
+    public parseSymbolId(symbol: Coin) {
         switch (symbol) {
             case Coin.APE:   return "apecoin";
             case Coin.ARTX:  return "artx";

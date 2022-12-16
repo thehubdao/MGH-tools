@@ -1,3 +1,17 @@
 export enum Coin {
-    APE, ARTX, ATRI, BTC, CUBE, DAI, ETH, MANA, MATIC, RARI, SAND, SCOTT, USDC, WBTC, WETH
+    APE = "APE",
+    ARTX = "ARTX",
+    ATRI = "ATRI",
+    BTC = "BTC",
+    CUBE = "CUBE",
+    DAI = "DAI",
+    ETH = "ETH",
+    MANA = "MANA",
+    MATIC = "MATIC",
+    RARI = "RARI",
+    SAND = "SAND",
+    SCOTT = "SCOTT",
+    USDC = "USDC",
+    WBTC = "WBTC",
+    WETH = "WETH"
 }
