@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.StdDeviation = exports.Skewness = exports.R2 = exports.MedAPE = exports.MAPE = exports.StatsGroup = exports.waitFor = exports.isValidTokenId = exports.findOldestPrice = exports.getVariation = exports.TokenizedModelManager = exports.TokenManager = exports.CollectionManager = exports.PriceFinder = exports.Coin = exports.OpenseaCollectionManager = exports.ModelManager = exports.LoggerWebSocket = exports.LoggerManager = exports.Logger = exports.SimpleITRMConnection = exports.ITRMConnection = exports.TokenRequest = exports.TokenCreator = exports.ContractRequest = exports.ContractEraser = exports.ContractEditor = exports.ContractCreator = exports.CollectionRequest = exports.CollectionEraser = exports.CollectionCreator = exports.MarketAPIService = exports.MGHToolsGlobal = exports.RequestType = exports.APIRequest = exports.APIService = void 0;
+exports.StdDeviation = exports.Skewness = exports.R2 = exports.MedAPE = exports.MAPE = exports.StatsGroup = exports.waitFor = exports.isValidTokenId = exports.findOldestPrice = exports.getVariation = exports.TokenizedModelManager = exports.TokenManager = exports.CollectionManager = exports.PriceFinder = exports.Coin = exports.OpenseaAPIConnection = exports.OpenseaCollectionManager = exports.ModelManager = exports.LoggerWebSocket = exports.LoggerManager = exports.Logger = exports.SimpleITRMConnection = exports.ITRMConnection = exports.TokenRequest = exports.TokenCreator = exports.ContractRequest = exports.ContractEraser = exports.ContractEditor = exports.ContractCreator = exports.CollectionRequest = exports.CollectionEraser = exports.CollectionCreator = exports.MarketAPIService = exports.MGHToolsGlobal = exports.RequestType = exports.APIRequest = exports.APIService = void 0;
 var APIService_1 = require("./services/api/APIService");
 Object.defineProperty(exports, "APIService", { enumerable: true, get: function () { return APIService_1.APIService; } });
 var APIRequest_1 = require("./services/api/APIRequest");
@@ -43,6 +43,8 @@ var ModelManager_1 = require("./mongoose/ModelManager");
 Object.defineProperty(exports, "ModelManager", { enumerable: true, get: function () { return ModelManager_1.ModelManager; } });
 var OpenseaCollectionManager_1 = require("./opensea/OpenseaCollectionManager");
 Object.defineProperty(exports, "OpenseaCollectionManager", { enumerable: true, get: function () { return OpenseaCollectionManager_1.OpenseaCollectionManager; } });
+var OpenseaAPIConnection_1 = require("./opensea/OpenseaAPIConnection");
+Object.defineProperty(exports, "OpenseaAPIConnection", { enumerable: true, get: function () { return OpenseaAPIConnection_1.OpenseaAPIConnection; } });
 var Coin_1 = require("./token/coingecko/Coin");
 Object.defineProperty(exports, "Coin", { enumerable: true, get: function () { return Coin_1.Coin; } });
 var PriceFinder_1 = require("./token/coingecko/PriceFinder");

@@ -24,11 +24,12 @@ export { LoggerWebSocket as LoggerWebSocket } from './itrmachines/log/LoggerWebS
 export { ModelManager as ModelManager } from './mongoose/ModelManager';
 
 export { OpenseaCollectionManager as OpenseaCollectionManager } from './opensea/OpenseaCollectionManager';
+export { OpenseaAPIConnection as OpenseaAPIConnection } from './opensea/OpenseaAPIConnection';
 
 export { Coin as Coin } from './token/coingecko/Coin';
 export { PriceFinder as PriceFinder } from './token/coingecko/PriceFinder';
 export { IContract as IContract, ICollection as ICollection, CollectionManager as CollectionManager } from './services/api/market/mongoose/CollectionManager';
-export { TokenManager as TokenManager, IPrice as IPrice, ISale as ISale, IOrder as IOrder, IMaker as IMaker } from './services/api/market/mongoose/TokenManager';
+export { TokenManager as TokenManager, IToken as IToken, IPrice as IPrice, ISale as ISale, IOrder as IOrder, IMaker as IMaker } from './services/api/market/mongoose/TokenManager';
 export { HistoricalTransaction as HistoricalTransaction } from './token/TokenDefinitions';
 export { TokenizedModelManager as TokenizedModelManager } from './token/TokenizedModelManager';
 export { getVariation as getVariation } from './token/TokenTools';
