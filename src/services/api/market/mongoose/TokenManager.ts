@@ -133,7 +133,10 @@ export class TokenManager extends ModelManager<IToken> {
                 datum[property] = token[property];
             writes.push({
                 updateOne: {
-                    filter: { tokenId: token.tokenId },
+                    filter: {
+                        tokenId: token.tokenId,
+                        collectionName: token.collectionName
+                    },
                     update: datum
                 }
             });
@@ -145,7 +148,15 @@ export class TokenManager extends ModelManager<IToken> {
         await super.deleteMany({ collectionName: collection });
     }
 
+    public async deleteManyByTokenId(collection: ICollection, tokenId: string) {
+        await super.deleteMany({ collectionName: collection.name, tokenId: tokenId });
+    }
+
     public async countTokens(collection: ICollection) {
         return super.countDocuments({ collectionName: collection.name });
+    }
+
+    public async batchByCollection(collection: ICollection, from: number, size: number) {
+        return await this.model.find({ collectionName: collection.name }).skip(from).limit(size);
     }
 }

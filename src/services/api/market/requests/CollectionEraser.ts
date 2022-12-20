@@ -10,7 +10,7 @@ export class CollectionEraser extends APIRequest {
         let collection = await memory.market.collectionManager.find(name);
         if (collection) {
             await memory.market.collectionManager.delete(collection.name);
-            await memory.market.tokenManager.delete(collection.name);
+            await memory.market.tokenManager.deleteMany(collection.name);
             return res.status(200).json({ message: "Collection deleted" });
         }
         return res.status(400).json({ message: "Collection '" + name + "' was not found" });

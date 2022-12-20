@@ -1,8 +1,13 @@
 import { IContract } from '../services/api/market/mongoose/CollectionManager';
 import { IToken } from '../services/api/market/mongoose/TokenManager';
+export interface OpenseaAPIConnectionConfig {
+    waitingTime: number;
+    coolingTime: number;
+}
 export declare class OpenseaAPIConnection {
     private apiKey;
-    constructor(apiKey: string);
+    private config;
+    constructor(apiKey: string, config: OpenseaAPIConnectionConfig);
     requestOrders(type: string, contract: IContract, tokens: IToken[]): Promise<any>;
     private buildTokensSuffix;
     private request;

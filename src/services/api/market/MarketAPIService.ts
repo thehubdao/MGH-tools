@@ -10,6 +10,7 @@ import { ContractEraser } from "./requests/ContractEraser";
 import { ContractRequest } from "./requests/ContractRequest";
 import { TokenCreator } from "./requests/TokenCreator";
 import { TokenRequest } from "./requests/TokenRequest";
+import { TokenEraser } from "./requests/TokenEraser";
 
 export interface MarketAPIServiceConfig extends APIServiceConfig {
     collectionDatabase: string,
@@ -36,5 +37,6 @@ export class MarketAPIService extends APIService {
         this.addRequest(new ContractEditor());
         this.addRequest(new TokenCreator());
         this.addRequest(new TokenRequest());
+        this.addRequest(new TokenEraser());
     }
 }

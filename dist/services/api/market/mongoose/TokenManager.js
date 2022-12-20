@@ -107,7 +107,10 @@ class TokenManager extends ModelManager_1.ModelManager {
                     datum[property] = token[property];
                 writes.push({
                     updateOne: {
-                        filter: { tokenId: token.tokenId },
+                        filter: {
+                            tokenId: token.tokenId,
+                            collectionName: token.collectionName
+                        },
                         update: datum
                     }
                 });
@@ -123,12 +126,25 @@ class TokenManager extends ModelManager_1.ModelManager {
             yield _super.deleteMany.call(this, { collectionName: collection });
         });
     }
+    deleteManyByTokenId(collection, tokenId) {
+        const _super = Object.create(null, {
+            deleteMany: { get: () => super.deleteMany }
+        });
+        return __awaiter(this, void 0, void 0, function* () {
+            yield _super.deleteMany.call(this, { collectionName: collection.name, tokenId: tokenId });
+        });
+    }
     countTokens(collection) {
         const _super = Object.create(null, {
             countDocuments: { get: () => super.countDocuments }
         });
         return __awaiter(this, void 0, void 0, function* () {
             return _super.countDocuments.call(this, { collectionName: collection.name });
+        });
+    }
+    batchByCollection(collection, from, size) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield this.model.find({ collectionName: collection.name }).skip(from).limit(size);
         });
     }
 }

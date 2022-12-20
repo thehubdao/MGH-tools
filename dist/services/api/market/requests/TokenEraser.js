@@ -9,24 +9,25 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CollectionEraser = void 0;
+exports.TokenEraser = void 0;
 const APIRequest_1 = require("../../APIRequest");
-class CollectionEraser extends APIRequest_1.APIRequest {
+class TokenEraser extends APIRequest_1.APIRequest {
     constructor() {
-        super(APIRequest_1.RequestType.DELETE, '/collections/:name');
+        super(APIRequest_1.RequestType.DELETE, '/collections/:name/tokens/:tokenId');
     }
     apply(memory, req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { name } = req.params;
+            const { name, tokenId } = req.params;
             let collection = yield memory.market.collectionManager.find(name);
             if (collection) {
-                yield memory.market.collectionManager.delete(collection.name);
-                yield memory.market.tokenManager.deleteMany(collection.name);
-                return res.status(200).json({ message: "Collection deleted" });
+                if (!tokenId)
+                    return res.status(400).send({ err: "parameter 'tokenId' was not found" });
+                yield memory.market.tokenManager.deleteManyByTokenId(collection, tokenId);
+                return res.status(200).json({ message: "Tokens '" + tokenId + "' where remover from collection'" + name + "'" });
             }
             return res.status(400).json({ message: "Collection '" + name + "' was not found" });
         });
     }
 }
-exports.CollectionEraser = CollectionEraser;
-//# sourceMappingURL=CollectionEraser.js.map
+exports.TokenEraser = TokenEraser;
+//# sourceMappingURL=TokenEraser.js.map

@@ -16,8 +16,9 @@ exports.OpenseaAPIConnection = void 0;
 const axios_1 = __importDefault(require("axios"));
 const TokenTools_1 = require("../token/TokenTools");
 class OpenseaAPIConnection {
-    constructor(apiKey) {
+    constructor(apiKey, config) {
         this.apiKey = apiKey;
+        this.config = config;
     }
     requestOrders(type, contract, tokens) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -38,7 +39,7 @@ class OpenseaAPIConnection {
     }
     request(url) {
         return new Promise((resolve, reject) => __awaiter(this, void 0, void 0, function* () {
-            (0, TokenTools_1.waitFor)(150);
+            (0, TokenTools_1.waitFor)(this.config.waitingTime);
             axios_1.default.get(url, { headers: {
                     'Content-Type': 'application/json',
                     'X-API-KEY': this.apiKey,
@@ -48,7 +49,7 @@ class OpenseaAPIConnection {
                 resolve((_a = response === null || response === void 0 ? void 0 : response.data) === null || _a === void 0 ? void 0 : _a.orders);
             }).catch(err => {
                 console.log("> an error has ocurred when requesting orders:", err.response.data);
-                (0, TokenTools_1.waitFor)(3000);
+                (0, TokenTools_1.waitFor)(this.config.coolingTime);
                 resolve(undefined);
             });
         }));

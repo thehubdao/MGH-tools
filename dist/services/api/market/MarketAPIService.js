@@ -13,6 +13,7 @@ const ContractEraser_1 = require("./requests/ContractEraser");
 const ContractRequest_1 = require("./requests/ContractRequest");
 const TokenCreator_1 = require("./requests/TokenCreator");
 const TokenRequest_1 = require("./requests/TokenRequest");
+const TokenEraser_1 = require("./requests/TokenEraser");
 class MarketAPIService extends APIService_1.APIService {
     constructor(config) {
         super(config);
@@ -32,6 +33,7 @@ class MarketAPIService extends APIService_1.APIService {
         this.addRequest(new ContractEditor_1.ContractEditor());
         this.addRequest(new TokenCreator_1.TokenCreator());
         this.addRequest(new TokenRequest_1.TokenRequest());
+        this.addRequest(new TokenEraser_1.TokenEraser());
     }
 }
 exports.MarketAPIService = MarketAPIService;

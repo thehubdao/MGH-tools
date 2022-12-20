@@ -70,5 +70,9 @@ export declare class TokenManager extends ModelManager<IToken> {
     })[]>;
     updateMany(tokens: any[], properties: string[]): Promise<void>;
     deleteMany(collection: string): Promise<void>;
+    deleteManyByTokenId(collection: ICollection, tokenId: string): Promise<void>;
     countTokens(collection: ICollection): Promise<number>;
+    batchByCollection(collection: ICollection, from: number, size: number): Promise<(import("mongoose").Document<unknown, any, IToken> & IToken & {
+        _id: import("mongoose").Types.ObjectId;
+    })[]>;
 }
