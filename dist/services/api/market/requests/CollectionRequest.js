@@ -23,7 +23,7 @@ class CollectionRequest extends APIRequest_1.APIRequest {
                 size = parseInt(size);
                 if (!isNaN(from) && !isNaN(size))
                     return res.status(200).json({ collections: yield this.getCollectionInfo(memory, yield memory.market.collectionManager.batch(from, size)) });
-                return res.status(400).send({ err: "parameters 'from' or 'size' are not valid, check your parameters" });
+                return res.status(400).send({ err: "parameters 'from' or 'size' are not valid, check your query" });
             }
             return res.status(400).send({ err: "no valid parameter" });
         });

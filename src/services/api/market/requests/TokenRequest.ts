@@ -1,5 +1,6 @@
-import { IOrder, IPrice, ISale, IToken } from "../mongoose/TokenManager";
+import { IToken } from "../mongoose/TokenManager";
 import { APIRequest, RequestType } from "../../APIRequest";
+import { TOkenCleaner } from "../utils/TokenCleaner";
 
 export class TokenRequest extends APIRequest {
     constructor() {
@@ -29,50 +30,11 @@ export class TokenRequest extends APIRequest {
         return {
             tokenId: token.tokenId,
             chain: token.chain,
-            listings: this.cleanOrders(token.listings),
-            offers: this.cleanOrders(token.offers),
-            lastSale: token.lastSale ? this.cleanSale(token.lastSale) : undefined,
-            currentPrice: token.currentPrice ? this.cleanPrice(token.currentPrice) : undefined,
-            bestOfferedPrice: token.bestOfferedPrice ? this.cleanPrice(token.bestOfferedPrice) : undefined
-        };
-    }
-
-    private cleanOrders(orders: IOrder[]) {
-        let result: any[] = [];
-        for (let order of orders)
-            result.push({
-                price: order.price,
-                eth_price: order.eth_price,
-                order_hash: order.order_hash,
-                listing_time: order.listing_time,
-                expiration_time: order.expiration_time,
-                created_date: order.created_date,
-                closing_date: order.closing_date,
-                maker: {
-                    user: order.maker.user,
-                    profile_img_url: order.maker.profile_img_url,
-                    address: order.maker.address
-                },
-                symbol: order.symbol
-            });
-        return result;
-    }
-    
-    private cleanSale(sale: ISale) {
-        return {
-            timestamp: sale.timestamp,
-            price: sale.price,
-            eth_price: sale.eth_price,
-            eth_usd_price: sale.eth_usd_price,
-            symbol: sale.symbol
-        };
-    }
-
-    private cleanPrice(price: IPrice) {
-        return {
-            price: price.price,
-            eth_price: price.eth_price,
-            symbol: price.symbol
+            listings: TOkenCleaner.cleanOrders(token.listings),
+            offers: TOkenCleaner.cleanOrders(token.offers),
+            lastSale: token.lastSale ? TOkenCleaner.cleanSale(token.lastSale) : undefined,
+            currentPrice: token.currentPrice ? TOkenCleaner.cleanPrice(token.currentPrice) : undefined,
+            bestOfferedPrice: token.bestOfferedPrice ? TOkenCleaner.cleanPrice(token.bestOfferedPrice) : undefined
         };
     }
 }

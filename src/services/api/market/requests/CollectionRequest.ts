@@ -13,7 +13,7 @@ export class CollectionRequest extends APIRequest {
             size = parseInt(size);
             if (!isNaN(from) && !isNaN(size))
                 return res.status(200).json({ collections: await this.getCollectionInfo(memory, await memory.market.collectionManager.batch(from, size)) });
-            return res.status(400).send({ err: "parameters 'from' or 'size' are not valid, check your parameters" });
+            return res.status(400).send({ err: "parameters 'from' or 'size' are not valid, check your query" });
         }
         return res.status(400).send({ err: "no valid parameter" });
     }

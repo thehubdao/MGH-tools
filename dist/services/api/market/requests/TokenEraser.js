@@ -23,7 +23,7 @@ class TokenEraser extends APIRequest_1.APIRequest {
                 if (!tokenId)
                     return res.status(400).send({ err: "parameter 'tokenId' was not found" });
                 yield memory.market.tokenManager.deleteManyByTokenId(collection, tokenId);
-                return res.status(200).json({ message: "Tokens '" + tokenId + "' where remover from collection'" + name + "'" });
+                return res.status(200).json({ message: "Token '" + tokenId + "' was removed from collection'" + name + "'" });
             }
             return res.status(400).json({ message: "Collection '" + name + "' was not found" });
         });

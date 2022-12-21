@@ -159,4 +159,12 @@ export class TokenManager extends ModelManager<IToken> {
     public async batchByCollection(collection: ICollection, from: number, size: number) {
         return await this.model.find({ collectionName: collection.name }).skip(from).limit(size);
     }
+
+    public async batchListings(collection: ICollection, from: number, size: number) {
+        return await this.model.find({ collectionName: collection.name, currentPrice: { $exists: true } }).skip(from).limit(size);
+    }
+
+    public async batchOffers(collection: ICollection, from: number, size: number) {
+        return await this.model.find({ collectionName: collection.name, bestOfferedPrice: { $exists: true } }).skip(from).limit(size);
+    }
 }

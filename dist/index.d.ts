@@ -13,6 +13,9 @@ export { ContractEraser as ContractEraser } from './services/api/market/requests
 export { ContractRequest as ContractRequest } from './services/api/market/requests/ContractRequest';
 export { TokenCreator as TokenCreator } from './services/api/market/requests/TokenCreator';
 export { TokenRequest as TokenRequest } from './services/api/market/requests/TokenRequest';
+export { ListingsRequest as ListingsRequest } from './services/api/market/requests/ListingsRequest';
+export { OffersRequest as OffersRequest } from './services/api/market/requests/OffersRequest';
+export { TOkenCleaner as TOkenCleaner } from './services/api/market/utils/TokenCleaner';
 export { ITRMConnection as ITRMConnection } from './itrmachines/ai/ITRMConnection';
 export { SimpleITRMConnection as SimpleITRMConnection } from './itrmachines/ai/SimpleITRMConnection';
 export { Logger as Logger } from './itrmachines/log/Logger';

@@ -147,6 +147,16 @@ class TokenManager extends ModelManager_1.ModelManager {
             return yield this.model.find({ collectionName: collection.name }).skip(from).limit(size);
         });
     }
+    batchListings(collection, from, size) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield this.model.find({ collectionName: collection.name, currentPrice: { $exists: true } }).skip(from).limit(size);
+        });
+    }
+    batchOffers(collection, from, size) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield this.model.find({ collectionName: collection.name, bestOfferedPrice: { $exists: true } }).skip(from).limit(size);
+        });
+    }
 }
 exports.TokenManager = TokenManager;
 //# sourceMappingURL=TokenManager.js.map

@@ -75,4 +75,10 @@ export declare class TokenManager extends ModelManager<IToken> {
     batchByCollection(collection: ICollection, from: number, size: number): Promise<(import("mongoose").Document<unknown, any, IToken> & IToken & {
         _id: import("mongoose").Types.ObjectId;
     })[]>;
+    batchListings(collection: ICollection, from: number, size: number): Promise<(import("mongoose").Document<unknown, any, IToken> & IToken & {
+        _id: import("mongoose").Types.ObjectId;
+    })[]>;
+    batchOffers(collection: ICollection, from: number, size: number): Promise<(import("mongoose").Document<unknown, any, IToken> & IToken & {
+        _id: import("mongoose").Types.ObjectId;
+    })[]>;
 }

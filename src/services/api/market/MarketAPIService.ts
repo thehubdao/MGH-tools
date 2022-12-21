@@ -11,6 +11,8 @@ import { ContractRequest } from "./requests/ContractRequest";
 import { TokenCreator } from "./requests/TokenCreator";
 import { TokenRequest } from "./requests/TokenRequest";
 import { TokenEraser } from "./requests/TokenEraser";
+import { ListingsRequest } from "./requests/ListingsRequest";
+import { OffersRequest } from "./requests/OffersRequest";
 
 export interface MarketAPIServiceConfig extends APIServiceConfig {
     collectionDatabase: string,
@@ -38,5 +40,7 @@ export class MarketAPIService extends APIService {
         this.addRequest(new TokenCreator());
         this.addRequest(new TokenRequest());
         this.addRequest(new TokenEraser());
+        this.addRequest(new ListingsRequest());
+        this.addRequest(new OffersRequest())
     }
 }
