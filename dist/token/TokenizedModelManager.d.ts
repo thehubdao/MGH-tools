@@ -1,3 +1,4 @@
+/// <reference types="mongoose/types/query" />
 /// <reference types="mongoose/types/aggregate" />
 /// <reference types="mongoose/types/callback" />
 /// <reference types="mongoose/types/collection" />
@@ -23,13 +24,13 @@
 /// <reference types="mongoose/types/virtuals" />
 /// <reference types="mongoose" />
 /// <reference types="mongoose/types/inferschematype" />
-import { ModelManager } from "../mongoose/ModelManager";
-export declare class TokenizedModelManager<S> extends ModelManager<S> {
+import { MongooseModelManager } from "itrm-tools";
+export declare class TokenizedModelManager<S> extends MongooseModelManager<S> {
     constructor(collection: string, definition: any);
-    find(tokenId: string): Promise<import("mongoose").HydratedDocument<S, {}, {}> | null>;
-    findMany(tokenIds: string[]): Promise<import("mongoose").HydratedDocument<S, {}, {}>[]>;
-    update(token: any): Promise<import("mongodb").UpdateResult>;
-    updateMany(tokens: any[], properties: string[]): Promise<void>;
-    delete(tokenId: string): Promise<import("mongodb").DeleteResult>;
-    deleteMany(tokens: any[]): Promise<void>;
+    findByTokenId(tokenId: string): import("mongoose").Query<import("mongoose").HydratedDocument<S, {}, {}> | null, import("mongoose").HydratedDocument<S, {}, {}>, {}, S>;
+    findMany(tokenIds: string[]): import("mongoose").Query<import("mongoose").HydratedDocument<S, {}, {}>[], import("mongoose").HydratedDocument<S, {}, {}>, {}, S>;
+    update(token: any): import("mongoose").Query<import("mongodb").UpdateResult, import("mongoose").HydratedDocument<S, {}, {}>, {}, S>;
+    updateMany(tokens: any[], properties: string[]): Promise<import("mongodb").BulkWriteResult>;
+    deleteByTokenId(tokenId: string): import("mongoose").Query<import("mongodb").DeleteResult, import("mongoose").HydratedDocument<S, {}, {}>, {}, S>;
+    deleteManyTokens(tokens: any[]): Promise<import("mongodb").BulkWriteResult>;
 }

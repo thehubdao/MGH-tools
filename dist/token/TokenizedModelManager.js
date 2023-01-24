@@ -10,34 +10,19 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.TokenizedModelManager = void 0;
-const ModelManager_1 = require("../mongoose/ModelManager");
-class TokenizedModelManager extends ModelManager_1.ModelManager {
+const itrm_tools_1 = require("itrm-tools");
+class TokenizedModelManager extends itrm_tools_1.MongooseModelManager {
     constructor(collection, definition) {
         super(collection, definition);
     }
-    find(tokenId) {
-        const _super = Object.create(null, {
-            find: { get: () => super.find }
-        });
-        return __awaiter(this, void 0, void 0, function* () {
-            return yield _super.find.call(this, { tokenId: tokenId });
-        });
+    findByTokenId(tokenId) {
+        return super.find({ tokenId: tokenId });
     }
     findMany(tokenIds) {
-        const _super = Object.create(null, {
-            findMany: { get: () => super.findMany }
-        });
-        return __awaiter(this, void 0, void 0, function* () {
-            return yield _super.findMany.call(this, { tokenId: { $in: tokenIds } });
-        });
+        return super.findMany({ tokenId: { $in: tokenIds } });
     }
     update(token) {
-        const _super = Object.create(null, {
-            update: { get: () => super.update }
-        });
-        return __awaiter(this, void 0, void 0, function* () {
-            return yield _super.update.call(this, { tokenId: token.tokenId }, token);
-        });
+        return super.updateOne({ tokenId: token.tokenId }, token);
     }
     updateMany(tokens, properties) {
         const _super = Object.create(null, {
@@ -59,29 +44,19 @@ class TokenizedModelManager extends ModelManager_1.ModelManager {
             return yield _super.bulkWrite.call(this, writes);
         });
     }
-    delete(tokenId) {
-        const _super = Object.create(null, {
-            delete: { get: () => super.delete }
-        });
-        return __awaiter(this, void 0, void 0, function* () {
-            return yield _super.delete.call(this, { tokenId: tokenId });
-        });
+    deleteByTokenId(tokenId) {
+        return super.delete({ tokenId: tokenId });
     }
-    deleteMany(tokens) {
-        const _super = Object.create(null, {
-            bulkWrite: { get: () => super.bulkWrite }
-        });
-        return __awaiter(this, void 0, void 0, function* () {
-            let writes = [];
-            for (let token of tokens) {
-                writes.push({
-                    deleteOne: {
-                        filter: { tokenId: token.tokenId },
-                    }
-                });
-            }
-            return yield _super.bulkWrite.call(this, writes);
-        });
+    deleteManyTokens(tokens) {
+        let writes = [];
+        for (let token of tokens) {
+            writes.push({
+                deleteOne: {
+                    filter: { tokenId: token.tokenId },
+                }
+            });
+        }
+        return super.bulkWrite(writes);
     }
 }
 exports.TokenizedModelManager = TokenizedModelManager;

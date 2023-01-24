@@ -1,20 +1,20 @@
-import { ModelManager } from "../mongoose/ModelManager";
+import { MongooseModelManager } from "itrm-tools";
 
-export class TokenizedModelManager<S> extends ModelManager<S> {
+export class TokenizedModelManager<S> extends MongooseModelManager<S> {
     constructor(collection: string, definition: any) {
         super(collection, definition);
     }
 
-    public async find(tokenId: string) {
-        return await super.find({ tokenId: tokenId });
+    public findByTokenId(tokenId: string) {
+        return super.find({ tokenId: tokenId });
     }
 
-    public async findMany(tokenIds: string[]) {
-        return await super.findMany({ tokenId: { $in: tokenIds } });
+    public findMany(tokenIds: string[]) {
+        return super.findMany({ tokenId: { $in: tokenIds } });
     }
 
-    public async update(token: any) {
-        return await super.update({ tokenId: token.tokenId }, token);
+    public update(token: any) {
+        return super.updateOne({ tokenId: token.tokenId }, token);
     }
 
     public async updateMany(tokens: any[], properties: string[]) {
@@ -33,11 +33,11 @@ export class TokenizedModelManager<S> extends ModelManager<S> {
         return await super.bulkWrite(writes);
     }
 
-    public async delete(tokenId: string) {
-        return await super.delete({ tokenId: tokenId });
+    public deleteByTokenId(tokenId: string) {
+        return super.delete({ tokenId: tokenId });
     }
 
-    public async deleteMany(tokens: any[]) {
+    public deleteManyTokens(tokens: any[]) {
         let writes: any[] = [];
         for (let token of tokens) {
             writes.push({
@@ -46,6 +46,6 @@ export class TokenizedModelManager<S> extends ModelManager<S> {
                 }
             });
         }
-        return await super.bulkWrite(writes);
+        return super.bulkWrite(writes);
     }
 }

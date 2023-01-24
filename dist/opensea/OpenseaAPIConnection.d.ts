@@ -1,5 +1,5 @@
-import { IContract } from '../services/api/market/mongoose/CollectionManager';
-import { IToken } from '../services/api/market/mongoose/TokenManager';
+import { IContract } from '../api/market/mongoose/CollectionManager';
+import { IToken } from '../api/market/mongoose/TokenManager';
 export interface OpenseaAPIConnectionConfig {
     waitingTime: number;
     coolingTime: number;
