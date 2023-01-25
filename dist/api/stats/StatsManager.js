@@ -20,7 +20,6 @@ class StatsManager extends itrm_tools_1.MongooseModelManager {
             total: { type: Number, required: true },
         });
         this.stats = {};
-        this.initialized = false;
     }
     findManyByService(service) {
         return super.findMany({ service: { $in: [service] } });
@@ -50,28 +49,25 @@ class StatsManager extends itrm_tools_1.MongooseModelManager {
                     this.stats[stat.endpoint] = {};
                 this.stats[stat.endpoint][stat.date] = stat;
             }
-            this.initialized = true;
         });
     }
     count(service, path) {
         return __awaiter(this, void 0, void 0, function* () {
-            if (this.initialized) {
-                let date = new Date();
-                let month = (10000 * date.getFullYear()) + (100 * (1 + date.getMonth())) + 1;
-                if (!this.stats[path])
-                    this.stats[path] = {};
-                if (!this.stats[path][month]) {
-                    this.stats[path][month] = {
-                        service: service,
-                        endpoint: path,
-                        date: month,
-                        total: 1
-                    };
-                    yield this.create(this.stats[path][month]);
-                }
-                else
-                    this.stats[path][month].total++;
+            let date = new Date();
+            let month = (10000 * date.getFullYear()) + (100 * (1 + date.getMonth())) + 1;
+            if (!this.stats[path])
+                this.stats[path] = {};
+            if (!this.stats[path][month]) {
+                this.stats[path][month] = {
+                    service: service,
+                    endpoint: path,
+                    date: month,
+                    total: 1
+                };
+                yield this.create(this.stats[path][month]);
             }
+            else
+                this.stats[path][month].total++;
         });
     }
     save() {

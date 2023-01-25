@@ -12,7 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.StatsRequest = void 0;
 const itrm_tools_1 = require("itrm-tools");
 class StatsRequest extends itrm_tools_1.CheckableGetRequest {
-    constructor(statsManager) {
+    constructor(statsManager, delay) {
         super({
             path: "/stats",
             params: []
@@ -20,11 +20,12 @@ class StatsRequest extends itrm_tools_1.CheckableGetRequest {
         this.timestamp = 0;
         this.analyzis = {};
         this.statsManager = statsManager;
+        this.delay = delay;
     }
     apply(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             let timestamp = (new Date()).getTime();
-            if (timestamp - this.timestamp > 10 * 60 * 1000) {
+            if (timestamp - this.timestamp > this.delay) {
                 this.timestamp = timestamp;
                 this.analyzis = this.analize(this.statsManager.stats);
             }

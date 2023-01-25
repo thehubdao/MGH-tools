@@ -5,7 +5,8 @@ export declare class StatsRequest extends CheckableGetRequest {
     private timestamp;
     private analyzis;
     private statsManager;
-    constructor(statsManager: StatsManager);
+    private delay;
+    constructor(statsManager: StatsManager, delay: number);
     apply(req: Request, res: Response): Promise<any>;
     private analize;
     private calculateStats;

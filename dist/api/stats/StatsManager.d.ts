@@ -35,7 +35,6 @@ export interface IMonthlyStat {
 }
 export declare class StatsManager extends MongooseModelManager<IMonthlyStat> {
     stats: any;
-    private initialized;
     constructor(collection: string);
     findManyByService(service: string): import("mongoose").Query<(import("mongoose").Document<unknown, any, IMonthlyStat> & IMonthlyStat & {
         _id: import("mongoose").Types.ObjectId;

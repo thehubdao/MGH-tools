@@ -1,3 +1,5 @@
+export { MGHAPIService as MGHAPIService, MGHServiceConfig as MGHServiceConfig } from './api/MGHAPIService';
+
 export { MarketAPIService as MarketAPIService, MarketAPIServiceConfig as MarketAPIServiceConfig } from './api/market/MarketAPIService';
 export { CollectionCreator as CollectionCreator } from './api/market/requests/CollectionCreator';
 export { CollectionEraser as CollectionEraser } from './api/market/requests/CollectionEraser';
@@ -11,6 +13,10 @@ export { TokenRequest as TokenRequest } from './api/market/requests/TokenRequest
 export { ListingsRequest as ListingsRequest} from './api/market/requests/ListingsRequest';
 export { OffersRequest as OffersRequest} from './api/market/requests/OffersRequest';
 export { TOkenCleaner as TOkenCleaner} from './api/market/utils/TokenCleaner';
+
+export { StatsAPICheck as StatsAPICheck } from './api/stats/StatsAPICheck';
+export { StatsManager as StatsManager } from './api/stats/StatsManager';
+export { StatsRequest as StatsRequest } from './api/stats/StatsRequest';
 
 export { ITRMConnection as ITRMConnection } from './itrmachines/ai/ITRMConnection';
 export { SimpleITRMConnection as SimpleITRMConnection } from './itrmachines/ai/SimpleITRMConnection';

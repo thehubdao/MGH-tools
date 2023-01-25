@@ -17,14 +17,19 @@ const StatsRequest_1 = require("./stats/StatsRequest");
 const mongoose_1 = require("mongoose");
 class MGHAPIService extends itrm_tools_1.APIService {
     constructor(config) {
+        var _a;
         super(config);
         this.statsManager = new StatsManager_1.StatsManager('service_stat');
         this.statsCheck = new StatsAPICheck_1.StatsAPICheck(config.name, this.statsManager);
         this.database = config.database;
+        this.delay = (_a = config.delay) !== null && _a !== void 0 ? _a : 10 * 60 * 1000;
+    }
+    getStatsManager() {
+        return this.statsManager;
     }
     init() {
         super.init();
-        this.addRequest(new StatsRequest_1.StatsRequest(this.statsManager));
+        this.addRequest(new StatsRequest_1.StatsRequest(this.statsManager, this.delay));
     }
     addRequest(request) {
         super.addRequest(request);
@@ -40,6 +45,15 @@ class MGHAPIService extends itrm_tools_1.APIService {
             yield this.statsManager.init(this.name);
             console.log("> deploying service");
             return _super.run.call(this, init);
+        });
+    }
+    close(finish) {
+        const _super = Object.create(null, {
+            close: { get: () => super.close }
+        });
+        return __awaiter(this, void 0, void 0, function* () {
+            yield (0, mongoose_1.disconnect)();
+            return _super.close.call(this, finish);
         });
     }
     update() {

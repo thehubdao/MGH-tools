@@ -6,18 +6,20 @@ export class StatsRequest extends CheckableGetRequest {
     private timestamp: number = 0;
     private analyzis: any = {};
     private statsManager: StatsManager;
+    private delay: number;
 
-    constructor(statsManager: StatsManager) {
+    constructor(statsManager: StatsManager, delay: number) {
         super({
             path: "/stats",
             params: []
         });
         this.statsManager = statsManager;
+        this.delay = delay;
     }
 
     public async apply(req: Request, res: Response): Promise<any> {
         let timestamp = (new Date()).getTime();
-        if (timestamp - this.timestamp > 10 * 60 * 1000) {
+        if (timestamp - this.timestamp > this.delay) {
             this.timestamp = timestamp;
             this.analyzis = this.analize(this.statsManager.stats);
         }

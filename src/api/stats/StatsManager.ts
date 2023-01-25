@@ -9,7 +9,6 @@ export interface IMonthlyStat {
 
 export class StatsManager extends MongooseModelManager<IMonthlyStat> {
     public stats: any = {};
-    private initialized: boolean = false;
 
     constructor(collection: string) {
         super(collection, {
@@ -49,26 +48,23 @@ export class StatsManager extends MongooseModelManager<IMonthlyStat> {
                 this.stats[stat.endpoint] = {};
             this.stats[stat.endpoint][stat.date] = stat;
         }
-        this.initialized = true;
     }
 
     public async count(service: string, path: string) {
-        if (this.initialized) {
-            let date = new Date();
-            let month = (10000 * date.getFullYear()) + (100 * (1 + date.getMonth())) + 1;
-            if (!this.stats[path])
-                this.stats[path] = {};
-            if (!this.stats[path][month]) {
-                this.stats[path][month] = {
-                    service: service,
-                    endpoint: path,
-                    date: month,
-                    total: 1
-                };
-                await this.create(this.stats[path][month]);
-            } else
-                this.stats[path][month].total++;
-        }
+        let date = new Date();
+        let month = (10000 * date.getFullYear()) + (100 * (1 + date.getMonth())) + 1;
+        if (!this.stats[path])
+            this.stats[path] = {};
+        if (!this.stats[path][month]) {
+            this.stats[path][month] = {
+                service: service,
+                endpoint: path,
+                date: month,
+                total: 1
+            };
+            await this.create(this.stats[path][month]);
+        } else
+            this.stats[path][month].total++;
     }
 
     public save() {
