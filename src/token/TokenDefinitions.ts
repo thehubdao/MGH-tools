@@ -1,12 +1,13 @@
-export interface HistoricalTransaction {
+export interface IHistoricalTransaction {
     timestamp: number,
     time: string,
     hash: string,
     action: string,
+    owner: string,
+    chain: string,
+    price?: number,
+    eth_price?: number,
+    symbol?: string,
     valuation?: number,
-    price: number,
-    eth_price: number,
-    buyer: string,
-    symbol: string,
-    broker: string
+    market: string
 }

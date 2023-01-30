@@ -26,7 +26,7 @@ export { OpenseaAPIConnection as OpenseaAPIConnection } from './opensea/OpenseaA
 
 export { IContract as IContract, ICollection as ICollection, CollectionManager as CollectionManager } from './api/market/mongoose/CollectionManager';
 export { TokenManager as TokenManager, IToken as IToken, IPrice as IPrice, ISale as ISale, IOrder as IOrder, IMaker as IMaker } from './api/market/mongoose/TokenManager';
-export { HistoricalTransaction as HistoricalTransaction } from './token/TokenDefinitions';
+export { IHistoricalTransaction as IHistoricalTransaction } from './token/TokenDefinitions';
 export { TokenizedModelManager as TokenizedModelManager } from './token/TokenizedModelManager';
 export { getVariation as getVariation } from './token/TokenTools';
 export { findOldestPrice as findOldestPrice } from './token/TokenTools';
