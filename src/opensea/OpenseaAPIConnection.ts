@@ -46,6 +46,8 @@ export class OpenseaAPIConnection {
                     resolve(response.data.orders);
                 else {
                     console.log("> no data was received");
+                    waitFor(this.config.coolingTime);
+                    resolve(undefined);
                 }
             }).catch(err => {
                 console.log("> an error has ocurred when requesting orders:", err.response ? err?.response : err);
