@@ -45,10 +45,13 @@ class OpenseaAPIConnection {
                     'X-API-KEY': this.apiKey,
                     "Accept-Encoding": "*"
                 } }).then(response => {
-                var _a;
-                resolve((_a = response === null || response === void 0 ? void 0 : response.data) === null || _a === void 0 ? void 0 : _a.orders);
+                if (response && response.data && response.data.orders)
+                    resolve(response.data.orders);
+                else {
+                    console.log("> no data was received");
+                }
             }).catch(err => {
-                console.log("> an error has ocurred when requesting orders:", err.response.data);
+                console.log("> an error has ocurred when requesting orders:", err.response ? err === null || err === void 0 ? void 0 : err.response : err);
                 (0, TokenTools_1.waitFor)(this.config.coolingTime);
                 resolve(undefined);
             });

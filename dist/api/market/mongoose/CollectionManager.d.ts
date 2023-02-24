@@ -42,16 +42,12 @@ export declare class CollectionManager extends MongooseModelManager<ICollection>
     } & Required<{
         _id: unknown;
     }>)>;
-    findByName(name: string): import("mongoose").Query<(import("mongoose").Document<unknown, any, ICollection> & ICollection & {
+    findByName(name: string): import("mongoose").Query<(import("mongoose").Document<unknown, any, ICollection> & Omit<ICollection & {
         _id: import("mongoose").Types.ObjectId;
-    }) | null, import("mongoose").Document<unknown, any, ICollection> & ICollection & {
+    }, never>) | null, import("mongoose").Document<unknown, any, ICollection> & Omit<ICollection & {
         _id: import("mongoose").Types.ObjectId;
-    }, {}, ICollection>;
-    deleteByName(name: string): import("mongoose").Query<import("mongodb").DeleteResult, import("mongoose").Document<unknown, any, ICollection> & ICollection & {
-        _id: import("mongoose").Types.ObjectId;
-    }, {}, ICollection>;
-    update(collection: ICollection): import("mongoose").Query<import("mongodb").UpdateResult, import("mongoose").Document<unknown, any, ICollection> & ICollection & {
-        _id: import("mongoose").Types.ObjectId;
-    }, {}, ICollection>;
+    }, never>, {}, ICollection>;
+    deleteByName(name: string): any;
+    update(collection: ICollection): any;
     countCollections(): Promise<number>;
 }

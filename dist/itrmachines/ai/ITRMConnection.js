@@ -84,6 +84,17 @@ class ITRMConnection {
             }).catch(err => { reject(err); });
         });
     }
+    saveDataset(dataSourceId, dataset) {
+        return new Promise((resolve, reject) => {
+            let url = this.modelService + "/dataSource/API/" + dataSourceId + "/?apiKey=" + this.apiKey;
+            axios_1.default.put(url, { data: dataset }, { headers: {
+                    'Content-Type': 'application/json',
+                    'Origin': this.domain
+                } }).then(response => {
+                resolve(response.data);
+            }).catch(err => { reject(err); });
+        });
+    }
 }
 exports.ITRMConnection = ITRMConnection;
 //# sourceMappingURL=ITRMConnection.js.map

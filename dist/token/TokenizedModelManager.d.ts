@@ -29,8 +29,8 @@ export declare class TokenizedModelManager<S> extends MongooseModelManager<S> {
     constructor(collection: string, definition: any);
     findByTokenId(tokenId: string): import("mongoose").Query<import("mongoose").HydratedDocument<S, {}, {}> | null, import("mongoose").HydratedDocument<S, {}, {}>, {}, S>;
     findMany(tokenIds: string[]): import("mongoose").Query<import("mongoose").HydratedDocument<S, {}, {}>[], import("mongoose").HydratedDocument<S, {}, {}>, {}, S>;
-    update(token: any): import("mongoose").Query<import("mongodb").UpdateResult, import("mongoose").HydratedDocument<S, {}, {}>, {}, S>;
-    updateMany(tokens: any[], properties: string[]): Promise<import("mongodb").BulkWriteResult>;
-    deleteByTokenId(tokenId: string): import("mongoose").Query<import("mongodb").DeleteResult, import("mongoose").HydratedDocument<S, {}, {}>, {}, S>;
-    deleteManyTokens(tokens: any[]): Promise<import("mongodb").BulkWriteResult>;
+    update(token: any): any;
+    updateMany(tokens: any[], properties: string[]): Promise<any>;
+    deleteByTokenId(tokenId: string): any;
+    deleteManyTokens(tokens: any[]): Promise<any>;
 }

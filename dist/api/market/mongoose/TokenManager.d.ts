@@ -68,26 +68,22 @@ export interface IToken {
 }
 export declare class TokenManager extends MongooseModelManager<IToken> {
     constructor(collection: string);
-    findManyByCollection(collection: ICollection, tokenIds: string[]): import("mongoose").Query<(import("mongoose").Document<unknown, any, IToken> & IToken & {
+    findManyByCollection(collection: ICollection, tokenIds: string[]): import("mongoose").Query<(import("mongoose").Document<unknown, any, IToken> & Omit<IToken & {
         _id: import("mongoose").Types.ObjectId;
-    })[], import("mongoose").Document<unknown, any, IToken> & IToken & {
+    }, never>)[], import("mongoose").Document<unknown, any, IToken> & Omit<IToken & {
         _id: import("mongoose").Types.ObjectId;
-    }, {}, IToken>;
-    updateMany(tokens: any[], properties: string[]): Promise<import("mongodb").BulkWriteResult>;
-    deleteByCollection(collection: ICollection): import("mongoose").Query<import("mongodb").DeleteResult, import("mongoose").Document<unknown, any, IToken> & IToken & {
-        _id: import("mongoose").Types.ObjectId;
-    }, {}, IToken>;
-    deleteManyByTokenId(collection: ICollection, tokenId: string): import("mongoose").Query<import("mongodb").DeleteResult, import("mongoose").Document<unknown, any, IToken> & IToken & {
-        _id: import("mongoose").Types.ObjectId;
-    }, {}, IToken>;
+    }, never>, {}, IToken>;
+    updateMany(tokens: any[], properties: string[]): Promise<any>;
+    deleteByCollection(collection: ICollection): any;
+    deleteManyByTokenId(collection: ICollection, tokenId: string): any;
     countTokens(collection: ICollection): Promise<number>;
-    batchByCollection(collection: ICollection, from: number, size: number): Promise<(import("mongoose").Document<unknown, any, IToken> & IToken & {
+    batchByCollection(collection: ICollection, from: number, size: number): Promise<(import("mongoose").Document<unknown, any, IToken> & Omit<IToken & {
         _id: import("mongoose").Types.ObjectId;
-    })[]>;
-    batchListings(collection: ICollection, from: number, size: number): Promise<(import("mongoose").Document<unknown, any, IToken> & IToken & {
+    }, never>)[]>;
+    batchListings(collection: ICollection, from: number, size: number): Promise<(import("mongoose").Document<unknown, any, IToken> & Omit<IToken & {
         _id: import("mongoose").Types.ObjectId;
-    })[]>;
-    batchOffers(collection: ICollection, from: number, size: number): Promise<(import("mongoose").Document<unknown, any, IToken> & IToken & {
+    }, never>)[]>;
+    batchOffers(collection: ICollection, from: number, size: number): Promise<(import("mongoose").Document<unknown, any, IToken> & Omit<IToken & {
         _id: import("mongoose").Types.ObjectId;
-    })[]>;
+    }, never>)[]>;
 }

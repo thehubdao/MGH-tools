@@ -42,9 +42,13 @@ export class OpenseaAPIConnection {
                 'X-API-KEY': this.apiKey,
                 "Accept-Encoding": "*"
             }}).then(response => {
-                resolve(response?.data?.orders);
+                if (response && response.data && response.data.orders)
+                    resolve(response.data.orders);
+                else {
+                    console.log("> no data was received");
+                }
             }).catch(err => {
-                console.log("> an error has ocurred when requesting orders:", err.response.data);
+                console.log("> an error has ocurred when requesting orders:", err.response ? err?.response : err);
                 waitFor(this.config.coolingTime);
                 resolve(undefined);
             });

@@ -11,4 +11,5 @@ export declare class ITRMConnection {
     getHistoricalPredictions(update: any): Promise<any>;
     getPrediction(update: any, input: any): Promise<any>;
     getPredictionList(update: any, inputs: any[]): Promise<any>;
+    saveDataset(dataSourceId: string, dataset: any[]): Promise<unknown>;
 }

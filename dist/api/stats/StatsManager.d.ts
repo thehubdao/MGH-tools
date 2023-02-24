@@ -36,13 +36,13 @@ export interface IMonthlyStat {
 export declare class StatsManager extends MongooseModelManager<IMonthlyStat> {
     stats: any;
     constructor(collection: string);
-    findManyByService(service: string): import("mongoose").Query<(import("mongoose").Document<unknown, any, IMonthlyStat> & IMonthlyStat & {
+    findManyByService(service: string): import("mongoose").Query<(import("mongoose").Document<unknown, any, IMonthlyStat> & Omit<IMonthlyStat & {
         _id: import("mongoose").Types.ObjectId;
-    })[], import("mongoose").Document<unknown, any, IMonthlyStat> & IMonthlyStat & {
+    }, never>)[], import("mongoose").Document<unknown, any, IMonthlyStat> & Omit<IMonthlyStat & {
         _id: import("mongoose").Types.ObjectId;
-    }, {}, IMonthlyStat>;
-    updateMany(stats: any[]): Promise<import("mongodb").BulkWriteResult>;
+    }, never>, {}, IMonthlyStat>;
+    updateMany(stats: any[]): Promise<any>;
     init(service: string): Promise<void>;
     count(service: string, path: string): Promise<void>;
-    save(): Promise<import("mongodb").BulkWriteResult>;
+    save(): Promise<any>;
 }
