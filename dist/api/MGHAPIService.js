@@ -12,15 +12,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.MGHAPIService = void 0;
 const itrm_tools_1 = require("itrm-tools");
 const StatsAPICheck_1 = require("./stats/StatsAPICheck");
-const StatsManager_1 = require("./stats/StatsManager");
 const StatsRequest_1 = require("./stats/StatsRequest");
 const mongoose_1 = require("mongoose");
 class MGHAPIService extends itrm_tools_1.APIService {
     constructor(config) {
         var _a;
         super(config);
-        this.statsManager = new StatsManager_1.StatsManager('service_stat');
-        this.statsCheck = new StatsAPICheck_1.StatsAPICheck(config.name, this.statsManager);
+        this.statsManager = config.statsManager;
+        this.statsCheck = new StatsAPICheck_1.StatsAPICheck(config.name, config.statsManager);
         this.database = config.database;
         this.delay = (_a = config.delay) !== null && _a !== void 0 ? _a : 10 * 60 * 1000;
     }

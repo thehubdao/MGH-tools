@@ -53,7 +53,7 @@ class OpenseaAPIConnection {
                     resolve(undefined);
                 }
             }).catch(err => {
-                console.log("> an error has ocurred when requesting orders:", err.response ? err === null || err === void 0 ? void 0 : err.response : err);
+                console.log("> an error has ocurred when requesting orders:", (err === null || err === void 0 ? void 0 : err.response) ? err.response : err);
                 (0, TokenTools_1.waitFor)(this.config.coolingTime);
                 resolve(undefined);
             });

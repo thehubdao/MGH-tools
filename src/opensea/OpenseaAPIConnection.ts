@@ -50,7 +50,7 @@ export class OpenseaAPIConnection {
                     resolve(undefined);
                 }
             }).catch(err => {
-                console.log("> an error has ocurred when requesting orders:", err.response ? err?.response : err);
+                console.log("> an error has ocurred when requesting orders:", err?.response ? err.response : err);
                 waitFor(this.config.coolingTime);
                 resolve(undefined);
             });

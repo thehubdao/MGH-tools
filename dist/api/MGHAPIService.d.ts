@@ -2,12 +2,13 @@ import { APIService, APIServiceConfig, APIServiceResponse, CheckableAPIRequest }
 import { StatsManager } from "./stats/StatsManager";
 export interface MGHServiceConfig extends APIServiceConfig {
     database: string;
+    statsManager: StatsManager;
     delay?: number;
 }
 export declare class MGHAPIService extends APIService {
     private statsCheck;
-    private database;
     private statsManager;
+    private database;
     private delay;
     constructor(config: MGHServiceConfig);
     getStatsManager(): StatsManager;

@@ -1,9 +1,12 @@
+import { CollectionManager } from "./mongoose/CollectionManager";
+import { TokenManager } from "./mongoose/TokenManager";
 import { MGHAPIService, MGHServiceConfig } from "../MGHAPIService";
 export interface MarketAPIServiceConfig extends MGHServiceConfig {
-    collectionDatabase: string;
-    tokenDatabase: string;
+    collectionManager: CollectionManager;
+    tokenManager: TokenManager;
 }
 export declare class MarketAPIService extends MGHAPIService {
+    memory: any;
     constructor(config: MarketAPIServiceConfig);
     private placeRequests;
 }

@@ -15,16 +15,20 @@ import { OffersRequest } from "./requests/OffersRequest";
 import { MGHAPIService, MGHServiceConfig } from "../MGHAPIService";
 
 export interface MarketAPIServiceConfig extends MGHServiceConfig {
-    collectionDatabase: string,
-    tokenDatabase: string
+    collectionManager: CollectionManager,
+    tokenManager: TokenManager
 }
 
 export class MarketAPIService extends MGHAPIService {
+    public memory: any = { market: {} };
+
     constructor(config: MarketAPIServiceConfig) {
         super(config);
+        this.memory.market.collectionManager = config.collectionManager;
+        this.memory.market.tokenManager = config.tokenManager;
         this.placeRequests(
-            new CollectionManager(config.collectionDatabase),
-            new TokenManager(config.tokenDatabase)
+            this.memory.market.collectionManager,
+            this.memory.market.tokenManager
         );
     }
 

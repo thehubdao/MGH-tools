@@ -1,8 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.MarketAPIService = void 0;
-const CollectionManager_1 = require("./mongoose/CollectionManager");
-const TokenManager_1 = require("./mongoose/TokenManager");
 const CollectionCreator_1 = require("./requests/CollectionCreator");
 const CollectionEraser_1 = require("./requests/CollectionEraser");
 const CollectionRequest_1 = require("./requests/CollectionRequest");
@@ -19,7 +17,10 @@ const MGHAPIService_1 = require("../MGHAPIService");
 class MarketAPIService extends MGHAPIService_1.MGHAPIService {
     constructor(config) {
         super(config);
-        this.placeRequests(new CollectionManager_1.CollectionManager(config.collectionDatabase), new TokenManager_1.TokenManager(config.tokenDatabase));
+        this.memory = { market: {} };
+        this.memory.market.collectionManager = config.collectionManager;
+        this.memory.market.tokenManager = config.tokenManager;
+        this.placeRequests(this.memory.market.collectionManager, this.memory.market.tokenManager);
     }
     placeRequests(collectionManager, tokenManager) {
         this.addRequest(new CollectionRequest_1.CollectionRequest(collectionManager, tokenManager));

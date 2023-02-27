@@ -6,19 +6,20 @@ import { connect, disconnect } from 'mongoose';
 
 export interface MGHServiceConfig extends APIServiceConfig {
     database: string,
+    statsManager: StatsManager,
     delay?: number
 }
 
 export class MGHAPIService extends APIService {
     private statsCheck: StatsAPICheck;
-    private database: string;
     private statsManager: StatsManager;
+    private database: string;
     private delay: number;
     
     constructor(config: MGHServiceConfig) {
         super(config);
-        this.statsManager = new StatsManager('service_stat');
-        this.statsCheck = new StatsAPICheck(config.name, this.statsManager);
+        this.statsManager = config.statsManager;
+        this.statsCheck = new StatsAPICheck(config.name, config.statsManager);
         this.database = config.database;
         this.delay = config.delay ?? 10 * 60 * 1000;
     }
