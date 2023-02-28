@@ -1,8 +1,8 @@
 import { Request, Response } from "express";
-import { CheckableGetRequest, RequestContext } from "itrm-tools";
+import { CheckablePostRequest, RequestContext } from "itrm-tools";
 import { CollectionManager } from "../mongoose/CollectionManager";
 
-export class CollectionCreator extends CheckableGetRequest {
+export class CollectionCreator extends CheckablePostRequest {
     private collectionManager: CollectionManager;
 
     constructor(collectionManager: CollectionManager) {
