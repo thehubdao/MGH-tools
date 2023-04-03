@@ -11,7 +11,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CollectionCreator = void 0;
 const itrm_tools_1 = require("itrm-tools");
-class CollectionCreator extends itrm_tools_1.CheckableGetRequest {
+class CollectionCreator extends itrm_tools_1.CheckablePostRequest {
     constructor(collectionManager) {
         super({
             path: '/collections',

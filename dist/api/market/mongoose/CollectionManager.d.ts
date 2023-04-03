@@ -37,11 +37,7 @@ export interface ICollection {
 }
 export declare class CollectionManager extends MongooseModelManager<ICollection> {
     constructor(collection: string);
-    createByName(name: string): Promise<ICollection | (import("mongoose").Document<unknown, any, ICollection> & {
-        _id?: unknown;
-    } & Required<{
-        _id: unknown;
-    }>)>;
+    createByName(name: string): Promise<ICollection>;
     findByName(name: string): import("mongoose").Query<(import("mongoose").Document<unknown, any, ICollection> & Omit<ICollection & {
         _id: import("mongoose").Types.ObjectId;
     }, never>) | null, import("mongoose").Document<unknown, any, ICollection> & Omit<ICollection & {

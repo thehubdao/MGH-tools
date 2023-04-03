@@ -33,7 +33,8 @@ describe("Testing MGH API Service", () => {
             port: 8101,
             database: url,
             express: new ExpressStandardConfiguration(),
-            delay: 0
+            delay: 0,
+            statsManager: new StatsManager('test')
         };
         service = new MGHAPIService(config);
         service.init();
